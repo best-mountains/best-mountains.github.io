@@ -1,0 +1,47 @@
+name: "BEST"
+title: "BEST Mountains"
+description: "BEST"
+output_dir: "."
+navbar:
+  title: <p style="color:darkgreen;font-weight:bold;font-size:30px">Biodiversity along Elevational Gradients (BEST)</p>
+  right:
+    - text: "HOME"
+      href: index.html
+    - text: "TEAM"
+      href: team.html
+    - text: "MOUNTAINS"
+      menu:
+        - text: "Dabieshan (安徽大别山)"
+          href: Dabieshan.html
+        - text: "Tianmushan (浙江天目山)"
+          href: Tianmushan.html
+        - text: "Yulongxueshan (云南玉龙雪山)"
+          href: Yulongxueshan.html
+        - text: "Gaoligongshan (云南高黎贡山)"
+          href: Gaoligongshan.html  
+        - text: "Guanshan (江西官山)"
+          href: Guanshan.html
+        - text: "Daiyunshan (福建戴云山)"
+          href: Daiyunshan.html
+        - text: "Chebaling (广东车八岭)"
+          href: Chebaling.html
+        - text: "Jinfoshan (重庆金佛山)"
+          href: Jinfoshan.html
+        - text: "Emeishan (四川峨眉山)"
+          href: Emeishan.html
+        - text: "WestTianshan (新疆西天山)"
+          href: WestTianshan.html
+    - text: "RESEARCH"
+      href: research.html
+    - text: "PUBLICATIONS"
+      href: publications.html
+    - text: "DATA"
+      href: data.html
+      
+output:
+  html_document:
+    theme: readable
+    highlight: textmate
+    include:
+#      in_header: header.html
+      after_body: footer.html
