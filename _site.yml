@@ -3,7 +3,7 @@ title: "BEST Mountains"
 description: "BEST"
 output_dir: "."
 navbar:
-  title: <p style="color:darkgreen;font-weight:bold;font-size:30px">Biodiversity along Elevational Gradients (BEST)</p>
+  title: <p style="color:blue;font-weight:bold;font-size:30px">Biodiversity along Elevational Gradients (BEST)</p>
   right:
     - text: "HOME"
       href: index.html
