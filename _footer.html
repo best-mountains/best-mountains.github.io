@@ -23,6 +23,15 @@
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -67,6 +76,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -267,7 +277,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Jian Zhang @ ECNU</a>
+      <a class="navbar-brand" href="index.html"><p style="color:blue;font-weight:bold;font-size:30px">Biodiversity along Elevational Gradients (BEST)</p></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -275,28 +285,61 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">HOME</a>
 </li>
 <li>
-  <a href="people.html">Team &amp; Collaborators</a>
+  <a href="team.html">TEAM</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    MOUNTAINS
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Dabieshan.html">Dabieshan (安徽大别山)</a>
+    </li>
+    <li>
+      <a href="Tianmushan.html">Tianmushan (浙江天目山)</a>
+    </li>
+    <li>
+      <a href="Yulongxueshan.html">Yulongxueshan (云南玉龙雪山)</a>
+    </li>
+    <li>
+      <a href="Gaoligongshan.html">Gaoligongshan (云南高黎贡山)</a>
+    </li>
+    <li>
+      <a href="Guanshan.html">Guanshan (江西官山)</a>
+    </li>
+    <li>
+      <a href="Daiyunshan.html">Daiyunshan (福建戴云山)</a>
+    </li>
+    <li>
+      <a href="Chebaling.html">Chebaling (广东车八岭)</a>
+    </li>
+    <li>
+      <a href="Damingshan.html">Chebaling (广西大明山)</a>
+    </li>
+    <li>
+      <a href="Jinfoshan.html">Jinfoshan (重庆金佛山)</a>
+    </li>
+    <li>
+      <a href="Emeishan.html">Emeishan (四川峨眉山)</a>
+    </li>
+    <li>
+      <a href="WestTianshan.html">WestTianshan (新疆西天山)</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="research.html">Research</a>
+  <a href="research.html">RESEARCH</a>
 </li>
 <li>
-  <a href="teach.html">Teaching</a>
+  <a href="publications.html">PUBLICATIONS</a>
 </li>
 <li>
-  <a href="publications.html">Publications</a>
-</li>
-<li>
-  <a href="galary.html">Galary</a>
-</li>
-<li>
-  <a href="opportunities.html">Join the lab</a>
-</li>
-<li>
-  <a href="cn.html">中文</a>
+  <a href="data.html">DATA</a>
 </li>
       </ul>
     </div><!--/.nav-collapse -->
@@ -313,9 +356,9 @@ $(document).ready(function () {
 
 <hr>
 <center>
-Copyright © <a href="mailto:jzhang@des.ecnu.edu.cn">Jian Zhang</a> 2019 –
+Copyright © <a href="mailto:jzhang@des.ecnu.edu.cn">BEST</a> 2017 –
 <script type="text/javascript">
-  document.write(new Date().getFullYear());|Created
+  document.write(new Date().getFullYear());
 </script>
 <div class="line-block">Created using <a href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">rmarkdown</a></div>
 </center>
@@ -349,7 +392,7 @@ Copyright © <a href="mailto:jzhang@des.ecnu.edu.cn">Jian Zhang</a> 2019 –
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
