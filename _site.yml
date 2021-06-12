@@ -40,7 +40,7 @@ navbar:
     - text: "DATA"
       href: data.html
     - text: "NEWS"
-      href: NEWS.html
+      href: News.html
       
 output:
   html_document:
