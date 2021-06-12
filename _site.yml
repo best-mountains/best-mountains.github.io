@@ -31,6 +31,8 @@ navbar:
           href: Jinfoshan.html
         - text: "Emeishan (四川峨眉山)"
           href: Emeishan.html
+        - text: "Bawangling (海南霸王岭)"
+          href: Bawangling.html
         - text: "WestTianshan (新疆西天山)"
           href: WestTianshan.html
     - text: "RESEARCH"
