@@ -13,26 +13,35 @@
 
 <title>BEST-WestTianshan</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
 <script src="site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="site_libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -44,11 +53,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -61,32 +65,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -97,10 +76,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -117,40 +92,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 66px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h2 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h3 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h4 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h5 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h6 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -178,7 +129,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -190,7 +141,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -201,10 +152,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -216,7 +180,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -283,7 +246,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -302,7 +265,7 @@ $(document).ready(function () {
   <a href="team.html">TEAM</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     MOUNTAINS
      
     <span class="caret"></span>
@@ -363,7 +326,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -375,35 +338,61 @@ $(document).ready(function () {
 <p><br></p>
 <div id="mt.-west-tianshan-新疆西天山" class="section level2">
 <h2>Mt. West Tianshan (新疆西天山)</h2>
-<p>Mt. West Tianshan is located in the west of Xinjiang Uygur Autonomous Region. Our study sites is located within the Mt. West Tianshan National Nature Reserve (43°03′～43°15’N, 82°51′～83°06′E) and Wild Walnut Vally Provincial Nature Reserve. The total area of Mt. West Tianshan National Nature Reserve is 31217 km2, and the mountain peak is at 4257 m a.s.l. This region is mainly influenced by the temperate semiarid continental climate, with mean annual temperature varying from 5℃ to 7℃, and annual precipitation ranging from 600 mm to 800 mm.</p>
+<p>Mt. West Tianshan is located in the west of Xinjiang Uygur Autonomous
+Region. Our study sites is located within the Mt. West Tianshan National
+Nature Reserve (43°03′～43°15’N, 82°51′～83°06′E) and Wild Walnut Vally
+Provincial Nature Reserve. The total area of Mt. West Tianshan National
+Nature Reserve is 31217 km2, and the mountain peak is at 4257 m a.s.l.
+This region is mainly influenced by the temperate semiarid continental
+climate, with mean annual temperature varying from 5℃ to 7℃, and annual
+precipitation ranging from 600 mm to 800 mm.</p>
 <div align="center">
-<p><a href="Pictures/Xitianshan-4.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-4.jpg" /></a></p>
+<p><a href="Pictures/Xitianshan-4.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Xitianshan-4.jpg" /></a></p>
 <div id="htmlwidget-86125048f04499cd5eae" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-86125048f04499cd5eae">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[43.24853,82.85115,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"Mt. West Tianshan (西天山)",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[43.24853,43.24853],"lng":[82.85115,82.85115]},"setView":[[43.24853,82.85115],8,[]]},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-86125048f04499cd5eae">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[],[],10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,[],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":[],"setView":[[null,null],8,[]]},"evals":[],"jsHooks":[]}</script>
 </div>
 <hr>
 <div id="vegetation" class="section level3">
 <h3><strong>Vegetation</strong></h3>
-<p>Mt. West Tianshan has an obvious vertical distribution zone of vegetations, including desert vegetation (&lt;1100m), Malus sieversii and Armeniaca vulgaris mixed forest (1100-1300m), Populus talassica and Picea schrenkiana mixed forest (1300-1500m), Picea schrenkiana forest (1500-2950m), snow line (ca. 3200m), alpine meadow and flowstone lands (2590-3500 m), and permanent snow and glacier zone (&gt;3500 m). This mountain is well known for a large number of endangered or endemic plants, such as <em>Malus sieversii</em>, <em>Armeniaca vulgaris</em>, <em>Saussurea involucrate</em>, <em>Helianthemum songaricum</em>, and <em>Picea schrenkiana var. tianshanica</em>.</p>
+<p>Mt. West Tianshan has an obvious vertical distribution zone of
+vegetations, including desert vegetation (&lt;1100m), Malus sieversii
+and Armeniaca vulgaris mixed forest (1100-1300m), Populus talassica and
+Picea schrenkiana mixed forest (1300-1500m), Picea schrenkiana forest
+(1500-2950m), snow line (ca. 3200m), alpine meadow and flowstone lands
+(2590-3500 m), and permanent snow and glacier zone (&gt;3500 m). This
+mountain is well known for a large number of endangered or endemic
+plants, such as <em>Malus sieversii</em>, <em>Armeniaca vulgaris</em>,
+<em>Saussurea involucrate</em>, <em>Helianthemum songaricum</em>, and
+<em>Picea schrenkiana var. tianshanica</em>.</p>
 <div align="center">
-<p><a href="Pictures/Xitianshan-15.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-15.jpg" /></a></p>
+<p><a href="Pictures/Xitianshan-15.jpg" id="id" class="class"
+width="30%" height="30%"><img
+src="Pictures/Xitianshan-15.jpg" /></a></p>
 <p>The forest of <em>Picea schrenkiana</em> <br></p>
-<p><a href="Pictures/Xitianshan-6.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-6.jpg" /></a></p>
+<p><a href="Pictures/Xitianshan-6.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Xitianshan-6.jpg" /></a></p>
 <p>Forest landscape in the elevation of ~ 1200 m <br></p>
-<p><a href="Pictures/Xitianshan-7.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-7.jpg" /></a></p>
+<p><a href="Pictures/Xitianshan-7.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Xitianshan-7.jpg" /></a></p>
 <p>Forest landscape in the elevation of ~ 1500 m <br></p>
-<p><a href="Pictures/Xitianshan-1.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-1.JPG" /></a></p>
+<p><a href="Pictures/Xitianshan-1.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Xitianshan-1.JPG" /></a></p>
 </div>
 <hr>
 </div>
 <div id="flora" class="section level3">
 <h3><strong>Flora</strong></h3>
-<p>According to the Biodiversity and Management of West Tianshan Mountain National Nature Reserve (Xiao, et al. 2015), there are 847 vascular plant species, belonging to 93 families and 390 genera.</p>
+<p>According to the Biodiversity and Management of West Tianshan
+Mountain National Nature Reserve (Xiao, et al. 2015), there are 847
+vascular plant species, belonging to 93 families and 390 genera.</p>
 <div align="center">
-<p><a href="Pictures/Xitianshan-3.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-3.JPG" /></a></p>
+<p><a href="Pictures/Xitianshan-3.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Xitianshan-3.JPG" /></a></p>
 <p>Xinjiang Wild Apple <em>(Malus sieversii)</em></p>
 <p><br></p>
-<p><a href="Pictures/Xitianshan-8.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-8.jpg" /></a></p>
+<p><a href="Pictures/Xitianshan-8.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Xitianshan-8.jpg" /></a></p>
 <p><em>Saussurea involucrate</em></p>
 </div>
 <hr>
@@ -412,31 +401,66 @@ $(document).ready(function () {
 <h3><strong>Fauna</strong></h3>
 <p>The incomplete list of the Fauna of West Tianshan is below.</p>
 <div align="center">
-<p><a href="Pictures/Xitianshan-9.png" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-9.png" /></a> Reference: Xiao W.F. Yasheng A. Qian F.W. Xu H.X. Chen K.W. Liu W.C. 2015. Biodiversity and Management of West Tianshan Mountain National Nature Reserve, Xinjiang. China Forestry Publishing House, Beijing. Liu P., Kang L.J., Hou L.X., Tulson N. 2007. Fauna of terrestrial vertebrates in West Tianshan National Nature Reserve, Xinjiang. Endemic Diseases Bulletin, 22(41): 10-13. <br></p>
-<p><a href="Pictures/Xitianshan-10.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-10.jpg" /></a></p>
+<p><a href="Pictures/Xitianshan-9.png" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Xitianshan-9.png" /></a> Reference: Xiao
+W.F. Yasheng A. Qian F.W. Xu H.X. Chen K.W. Liu W.C. 2015. Biodiversity
+and Management of West Tianshan Mountain National Nature Reserve,
+Xinjiang. China Forestry Publishing House, Beijing. Liu P., Kang L.J.,
+Hou L.X., Tulson N. 2007. Fauna of terrestrial vertebrates in West
+Tianshan National Nature Reserve, Xinjiang. Endemic Diseases Bulletin,
+22(41): 10-13. <br></p>
+<p><a href="Pictures/Xitianshan-10.jpg" id="id" class="class"
+width="30%" height="30%"><img
+src="Pictures/Xitianshan-10.jpg" /></a></p>
 <p><em>Panthera uncia</em> <br></p>
-<p><a href="Pictures/Xitianshan-11.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-11.jpg" /></a></p>
+<p><a href="Pictures/Xitianshan-11.jpg" id="id" class="class"
+width="30%" height="30%"><img
+src="Pictures/Xitianshan-11.jpg" /></a></p>
 <p><em>Capra sibirica</em></p>
-<p><a href="Pictures/Xitianshan-16.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-16.jpg" /></a></p>
-<p><a href="Pictures/Xitianshan-19.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-19.jpg" /></a></p>
-<p><a href="Pictures/Xitianshan-17.JPG" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-17.JPG" /></a></p>
-<p><a href="Pictures/Xitianshan-18.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-18.JPG" /></a></p>
+<p><a href="Pictures/Xitianshan-16.jpg" id="id" class="class"
+width="30%" height="30%"><img
+src="Pictures/Xitianshan-16.jpg" /></a></p>
+<p><a href="Pictures/Xitianshan-19.jpg" id="id" class="class"
+width="30%" height="30%"><img
+src="Pictures/Xitianshan-19.jpg" /></a></p>
+<p><a href="Pictures/Xitianshan-17.JPG" id="id" class="class"
+width="30%" height="30%"><img
+src="Pictures/Xitianshan-17.JPG" /></a></p>
+<p><a href="Pictures/Xitianshan-18.jpg" id="id" class="class"
+width="30%" height="30%"><img
+src="Pictures/Xitianshan-18.JPG" /></a></p>
 </div>
 <hr>
 </div>
 <div id="research-sites-of-best-network" class="section level3">
 <h3><strong>Research sites of BEST network</strong></h3>
-<p>In 2019, thirteen 20 m × 20 m plots along an elevational gradient were set up from 1200 m to 2800 m in West Tianshan National Nature Reserve. The plots were set at intervals of ~100 m in elevation. Within each plot, all woody stems with ≥ 1 cm DBH were tagged and identified to species. There were 981 individuals with DBH ≥ 1 cm recorded, belonging to 4 families, 7 genera and 8 species.</p>
-<p><a href="Pictures/Xitianshan-13.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-13.jpg" /></a> <br></p>
-<p>In 2019, sixteen 20 m × 20 m plots along an elevational gradient were set up from 895 m to 1794 m inWild Walnut Vally Provincial Nature Reserve</p>
-<p><a href="Pictures/Xitianshan-14.png" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-14.png" /></a></p>
-<p><a href="Pictures/Xitianshan-21.JPG" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-21.JPG" /></a></p>
-<p><a href="Pictures/Xitianshan-20.JPG" id="id" class="class" width="30%" height="30%"><img src="Pictures/Xitianshan-20.JPG" /></a></p>
+<p>In 2019, thirteen 20 m × 20 m plots along an elevational gradient
+were set up from 1200 m to 2800 m in West Tianshan National Nature
+Reserve. The plots were set at intervals of ~100 m in elevation. Within
+each plot, all woody stems with ≥ 1 cm DBH were tagged and identified to
+species. There were 981 individuals with DBH ≥ 1 cm recorded, belonging
+to 4 families, 7 genera and 8 species.</p>
+<p><a href="Pictures/Xitianshan-13.jpg" id="id" class="class"
+width="30%" height="30%"><img src="Pictures/Xitianshan-13.jpg" /></a>
+<br></p>
+<p>In 2019, sixteen 20 m × 20 m plots along an elevational gradient were
+set up from 895 m to 1794 m inWild Walnut Vally Provincial Nature
+Reserve</p>
+<p><a href="Pictures/Xitianshan-14.png" id="id" class="class"
+width="30%" height="30%"><img
+src="Pictures/Xitianshan-14.png" /></a></p>
+<p><a href="Pictures/Xitianshan-21.JPG" id="id" class="class"
+width="30%" height="30%"><img
+src="Pictures/Xitianshan-21.JPG" /></a></p>
+<p><a href="Pictures/Xitianshan-20.JPG" id="id" class="class"
+width="30%" height="30%"><img
+src="Pictures/Xitianshan-20.JPG" /></a></p>
 <hr>
 </div>
 <div id="principal-investigator" class="section level3">
 <h3><strong>Principal Investigator</strong></h3>
-<p>Zhongping Tian (田中平): <a href="mailto:tianzhongping007@163.com">tianzhongping007@163.com</a></p>
+<p>Zhongping Tian (田中平): <a
+href="mailto:tianzhongping007@163.com">tianzhongping007@163.com</a></p>
 <p><strong>Research Team</strong>:</p>
 <ul>
 <li><p>Dr. Zhaochen Zhang (East China Normal University)</p></li>
@@ -454,7 +478,8 @@ Coming soon.
 <p>This site has been supported by:</p>
 <ul>
 <li><p>National Natural Science Foundation of China</p></li>
-<li><p>School of Ecological and Environmental Sciences, East China Normal University</p></li>
+<li><p>School of Ecological and Environmental Sciences, East China
+Normal University</p></li>
 <li><p>West Tianshan National Nature Reserve</p></li>
 </ul>
 <hr>
@@ -508,7 +533,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

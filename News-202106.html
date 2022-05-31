@@ -13,13 +13,22 @@
 
 <title>News-202106</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -34,11 +43,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -51,32 +55,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -87,10 +66,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -107,40 +82,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 66px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h2 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h3 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h4 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h5 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h6 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -168,7 +119,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -180,7 +131,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -191,10 +142,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -206,7 +170,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -273,7 +236,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -292,7 +255,7 @@ $(document).ready(function () {
   <a href="team.html">TEAM</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     MOUNTAINS
      
     <span class="caret"></span>
@@ -353,7 +316,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -363,10 +326,12 @@ $(document).ready(function () {
 
 
 <p><br></p>
-<div id="云南玉龙雪山苔藓植物多样性海拔梯度调查2021年5月30日-6月2日" class="section level3" align="center">
+<div id="云南玉龙雪山苔藓植物多样性海拔梯度调查2021年5月30日-6月2日"
+class="section level3" align="center">
 <h3>云南玉龙雪山苔藓植物多样性海拔梯度调查（2021年5月30日-6月2日）</h3>
 </div>
-<p><br>   玉龙雪山地处云南省西北部云贵高原与青藏高原的连接部位，主峰扇子陡海拔5596米，内有北半球距赤道最近的现代海洋性冰川，保留有完整的原始森林群落和珍稀野生动植物，被誉为“冰川博物馆”和“动植物宝库”，是我国生物多样性最丰富的地区，拥有丰富的生物资源。自19世纪中叶以来，已有众多国内外植物学家到玉龙雪山进行植物调查和标本采集工作，但对该地区苔藓植物的调查和研究仍比较缺乏。</p>
+<p><br>
+  玉龙雪山地处云南省西北部云贵高原与青藏高原的连接部位，主峰扇子陡海拔5596米，内有北半球距赤道最近的现代海洋性冰川，保留有完整的原始森林群落和珍稀野生动植物，被誉为”冰川博物馆”和”动植物宝库”，是我国生物多样性最丰富的地区，拥有丰富的生物资源。自19世纪中叶以来，已有众多国内外植物学家到玉龙雪山进行植物调查和标本采集工作，但对该地区苔藓植物的调查和研究仍比较缺乏。</p>
 <div align="center">
 <p><img src="Pictures/News/News202106-1.jpg" /> 玉龙雪山</p>
 </div>
@@ -374,7 +339,9 @@ $(document).ready(function () {
 <div align="center">
 <p><img src="Pictures/News/News202106-2.jpg" /> 玉龙雪山高山苔藓林</p>
 </div>
-<p>  为了解玉龙雪山苔藓植物多样性本底资源及沿海拔梯度分布规律，华东师范大学苔藓植物研究团队近期联合上海科技馆和贵州师范大学相关专家，于2021年5月30日至6月2日对玉龙雪山进行了苔藓植物调查和标本采集工作，本次调查覆盖了海拔2600～3800 m内的18个20 m × 50 m 样地，采用微样方调查法（SPS）对样地内的树附生苔藓植物丰富度和盖度进行了调查和统计，同时采用区系生境调查法（FHS）对样地内树附生、岩面薄土、土生、石生、朽木生等各种生境进行了全面的普查。共获得苔藓植物标本2218份，其中苔类植物627份，藓类植物1591份，这些标本后期将按科属进行分类，并由各个类群分类专家协助并完成鉴定。本次调查也得到中国科学院昆明植物研究所的罗亚皇老师及丽江高等师范专科学校师生的鼎力相助。</p>
+<p>  为了解玉龙雪山苔藓植物多样性本底资源及沿海拔梯度分布规律，华东师范大学苔藓植物研究团队近期联合上海科技馆和贵州师范大学相关专家，于2021年5月30日至6月2日对玉龙雪山进行了苔藓植物调查和标本采集工作，本次调查覆盖了海拔2600～3800
+m内的18个20 m × 50 m
+样地，采用微样方调查法（SPS）对样地内的树附生苔藓植物丰富度和盖度进行了调查和统计，同时采用区系生境调查法（FHS）对样地内树附生、岩面薄土、土生、石生、朽木生等各种生境进行了全面的普查。共获得苔藓植物标本2218份，其中苔类植物627份，藓类植物1591份，这些标本后期将按科属进行分类，并由各个类群分类专家协助并完成鉴定。本次调查也得到中国科学院昆明植物研究所的罗亚皇老师及丽江高等师范专科学校师生的鼎力相助。</p>
 <div align="center">
 <p><img src="Pictures/News/News202106-3.jpg" /></p>
 <p>野外工作</p>
@@ -437,7 +404,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

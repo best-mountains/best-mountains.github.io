@@ -13,13 +13,22 @@
 
 <title>News-202104</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -34,11 +43,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -51,32 +55,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -87,10 +66,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -107,40 +82,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 66px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h2 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h3 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h4 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h5 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h6 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -168,7 +119,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -180,7 +131,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -191,10 +142,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -206,7 +170,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -273,7 +236,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -292,7 +255,7 @@ $(document).ready(function () {
   <a href="team.html">TEAM</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     MOUNTAINS
      
     <span class="caret"></span>
@@ -353,7 +316,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -363,14 +326,16 @@ $(document).ready(function () {
 
 
 <p><br></p>
-<div id="best网络第二届野外监测研讨会在南宁师范大学召开" class="section level2" align="center">
+<div id="best网络第二届野外监测研讨会在南宁师范大学召开"
+class="section level2" align="center">
 <h2>BEST网络第二届野外监测研讨会在南宁师范大学召开</h2>
 </div>
 <p><br></p>
-<p>【新闻稿来源：<a href="https://hjsmxy.nnnu.edu.cn/info/1041/2231.htm" class="uri">https://hjsmxy.nnnu.edu.cn/info/1041/2231.htm</a>】</p>
+<p>【新闻稿来源：<a href="https://hjsmxy.nnnu.edu.cn/info/1041/2231.htm"
+class="uri">https://hjsmxy.nnnu.edu.cn/info/1041/2231.htm</a>】</p>
 <p>  2021年4月3-7日，由南宁师范大学广西西江流域生态环境与一体化发展协同创新中心、南宁师范大学北部湾环境演变与资源利用教育部重点实验室、华东师范大学生态与环境科学学院、南宁师范大学环境与生命科学学院等单位共同举办的亚热带海拔梯度生物多样性监测网络第二届野外监测研讨会在我校召开。来自华东师范大学、西北工业大学、重庆大学、中国科学院昆明植物研究所、中国科学院动物研究所、中国科学院西双版纳植物园、福建农林大学、广西大学等14个单位40余名专家学者和研究生参加了本次研讨会。</p>
 <p><img src="Pictures/News/paste-05E06431.png" /></p>
-<p>  南宁师范大学环境与生命科学学院院长宋书巧教授为本次研讨会致辞，会议特邀西北工业大学郝占庆教授和重庆大学杨永川教授作学术报告，报告题目分别为：长期生态学研究的方法论问题：大型固定样地及其意义、第三纪孓遗植物的存留及有效保育。郝占庆教授结合自身主持建立的长白山和秦岭大型固定森林样地的经验，系统阐述了生态学研究的基本方法、理论和假说以及新技术应用。杨永川教授以水杉、金钱松和银杉等孑遗植物的存留为例，介绍了人类活动对孑遗植物保育的“双重效应”，探索孑遗植物的有效保护措施。特邀报告结束后，研讨会以中国亚热带海拔梯度生物多样性监测技术交流为主线，围绕昆虫、土壤动物、鸟类、微气候、年轮、凋落物分解等生态监测技术展开讨论。与会学者积极研讨，现场气氛热烈。会后，参会学者前往大明山国家级自然保护区进行生物多样性考察。</p>
+<p>  南宁师范大学环境与生命科学学院院长宋书巧教授为本次研讨会致辞，会议特邀西北工业大学郝占庆教授和重庆大学杨永川教授作学术报告，报告题目分别为：长期生态学研究的方法论问题：大型固定样地及其意义、第三纪孓遗植物的存留及有效保育。郝占庆教授结合自身主持建立的长白山和秦岭大型固定森林样地的经验，系统阐述了生态学研究的基本方法、理论和假说以及新技术应用。杨永川教授以水杉、金钱松和银杉等孑遗植物的存留为例，介绍了人类活动对孑遗植物保育的”双重效应”，探索孑遗植物的有效保护措施。特邀报告结束后，研讨会以中国亚热带海拔梯度生物多样性监测技术交流为主线，围绕昆虫、土壤动物、鸟类、微气候、年轮、凋落物分解等生态监测技术展开讨论。与会学者积极研讨，现场气氛热烈。会后，参会学者前往大明山国家级自然保护区进行生物多样性考察。</p>
 <p><img src="Pictures/News/paste-D0A4306E.png" /></p>
 <p>  生物多样性监测是生态学研究、物种保护管理和资源可持续利用的核心环节，是评估生物多样性保护进展的有效途径。本次研讨会对推动我国亚热带海拔梯度生物多样性监测网络的发展，对建立山地生物多样性监测数据平台以及开展相关科研工作等具有重要意义。</p>
 
@@ -421,7 +386,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

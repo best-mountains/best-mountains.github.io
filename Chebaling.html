@@ -13,26 +13,35 @@
 
 <title>BEST-Chebaling</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
 <script src="site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="site_libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -44,11 +53,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -61,32 +65,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -97,10 +76,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -117,40 +92,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 66px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h2 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h3 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h4 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h5 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h6 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -178,7 +129,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -190,7 +141,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -201,10 +152,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -216,7 +180,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -283,7 +246,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -302,7 +265,7 @@ $(document).ready(function () {
   <a href="team.html">TEAM</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     MOUNTAINS
      
     <span class="caret"></span>
@@ -363,7 +326,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -375,26 +338,70 @@ $(document).ready(function () {
 <p><br> <br> <br></p>
 <div id="mt.-chebaling-车八岭" class="section level2">
 <h2>Mt. Chebaling (车八岭)</h2>
-<p>The Chebaling National Nature Reserve in Guangdong Province is located in the southeast of Shixing County (114° 09 04 “- 114° 16” E, 24°40 × 29 “- 24 °46” N), and has a total area of 7545 ha. The reserve was established in 1981, upgraded to a national nature reserve in 1988, joined the China MAB Reserve Network in 1995, and joined the UNESCO World Biosphere Reserve Network in 2007.</p>
-<p>The geological structure of the Chebaling reserve belongs to the South China Folded System, with relatively higher altitude for the northwest part and lower altitude for the southeast part. The mountain peak is Tianpingjia, with an altitude of 1,256 m. The lowest place is at Zhangdongshui, with an altitude of 330 m.</p>
-<p>Chebaling is dominated by a subtropical wet monsoon climate. It is wet and warm throughout the year, with ample sunshine and hydrothermal resources. The annual average temperature is 19.6℃. The highest temperature is 38.4℃ and the lowest is -5.5℃. The total precipitation of this reserve ranges from 1,150–2,126 mm. The rainy season of a year lasts from March till to August, and dry season from September to February of the next year. The annual evaporation is 1,530 mm. The annual relative humidity is 79%.</p>
+<p>The Chebaling National Nature Reserve in Guangdong Province is
+located in the southeast of Shixing County (114° 09 04 “- 114° 16” E,
+24°40 × 29 “- 24 °46” N), and has a total area of 7545 ha. The reserve
+was established in 1981, upgraded to a national nature reserve in 1988,
+joined the China MAB Reserve Network in 1995, and joined the UNESCO
+World Biosphere Reserve Network in 2007.</p>
+<p>The geological structure of the Chebaling reserve belongs to the
+South China Folded System, with relatively higher altitude for the
+northwest part and lower altitude for the southeast part. The mountain
+peak is Tianpingjia, with an altitude of 1,256 m. The lowest place is at
+Zhangdongshui, with an altitude of 330 m.</p>
+<p>Chebaling is dominated by a subtropical wet monsoon climate. It is
+wet and warm throughout the year, with ample sunshine and hydrothermal
+resources. The annual average temperature is 19.6℃. The highest
+temperature is 38.4℃ and the lowest is -5.5℃. The total precipitation of
+this reserve ranges from 1,150–2,126 mm. The rainy season of a year
+lasts from March till to August, and dry season from September to
+February of the next year. The annual evaporation is 1,530 mm. The
+annual relative humidity is 79%.</p>
 <div align="center">
 <div id="htmlwidget-753230edc1f6a10043d7" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-753230edc1f6a10043d7">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[24.77320935,114.2017172,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"Mt. Chebaling (车八岭)",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[24.77320935,24.77320935],"lng":[114.2017172,114.2017172]},"setView":[[24.77320935,114.2017172],8,[]]},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-753230edc1f6a10043d7">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[24.77320935,114.2017172,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"车八岭",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[24.77320935,24.77320935],"lng":[114.2017172,114.2017172]},"setView":[[24.77320935,114.2017172],8,[]]},"evals":[],"jsHooks":[]}</script>
 </div>
-<p><a href="Pictures/Chebaling-4.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Chebaling-4.jpg" /></a></p>
+<p><a href="Pictures/Chebaling-4.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Chebaling-4.jpg" /></a></p>
 <hr>
 <div id="vegetation-and-flora" class="section level3">
 <h3><strong>Vegetation and Flora</strong></h3>
-<p>The nature reserve is located in the transitional zone from the south-subtropical to the mid-subtropical, and covered by subtropical transitional flora, which is part of the sub flora of southern China. There are four vegetation groups, five vegetation types, nine vegetation subtypes, 22 formations and 54 communities.</p>
-<p>Chen et al. (1992) considered that mid-subtropical evergreen broad-leaved forest is the zonal vegetation and the main forest type of Chebaling reserve, distributed in the hills and mountains with the elevation range from 300 m to 900 m, covering an area of 3075 ha, and accounting for 41% of the nature reserve. The community is evergreen, diverse in species composition and complex in hierarchical structure. The evergreen broad-leaved tree species of the family Cyperidae, Camphor family, Tea Family, Hamamelinaceae and Magnoliaceae are the dominant species in the stand.</p>
-<p>The mixed forest composed mainly of <em>Pinus massoniana</em> with broad-leaved tree species is distributed in the mountains at elevation from 350 m to 850 m, with an area of 2570 ha, accounting for 34.1% of the total area of this reserve. The mountains, ridges and peaks above 900 m, cover 1245 ha, accounting for 34.1% of the area of the reserve. Due to the influence of temperature, humidity, wind, soil and other factors, this area is mainly covered by mountainous shrubs dominated by short plants such as <em>Rhododendron cavaleriei, R. simsii, Vaccinium bracteatum, Miscanthus</em>, etc. It is characterized by simple community structure and high coverage (&gt; 90%) .</p>
-<p><a href="Pictures/Chebaling-3.jpg" id="id" class="class" width="30%" height="30%"><img src="Pictures/Chebaling-3.jpg" /></a></p>
+<p>The nature reserve is located in the transitional zone from the
+south-subtropical to the mid-subtropical, and covered by subtropical
+transitional flora, which is part of the sub flora of southern China.
+There are four vegetation groups, five vegetation types, nine vegetation
+subtypes, 22 formations and 54 communities.</p>
+<p>Chen et al. (1992) considered that mid-subtropical evergreen
+broad-leaved forest is the zonal vegetation and the main forest type of
+Chebaling reserve, distributed in the hills and mountains with the
+elevation range from 300 m to 900 m, covering an area of 3075 ha, and
+accounting for 41% of the nature reserve. The community is evergreen,
+diverse in species composition and complex in hierarchical structure.
+The evergreen broad-leaved tree species of the family Cyperidae, Camphor
+family, Tea Family, Hamamelinaceae and Magnoliaceae are the dominant
+species in the stand.</p>
+<p>The mixed forest composed mainly of <em>Pinus massoniana</em> with
+broad-leaved tree species is distributed in the mountains at elevation
+from 350 m to 850 m, with an area of 2570 ha, accounting for 34.1% of
+the total area of this reserve. The mountains, ridges and peaks above
+900 m, cover 1245 ha, accounting for 34.1% of the area of the reserve.
+Due to the influence of temperature, humidity, wind, soil and other
+factors, this area is mainly covered by mountainous shrubs dominated by
+short plants such as <em>Rhododendron cavaleriei, R. simsii, Vaccinium
+bracteatum, Miscanthus</em>, etc. It is characterized by simple
+community structure and high coverage (&gt; 90%) .</p>
+<p><a href="Pictures/Chebaling-3.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Chebaling-3.jpg" /></a></p>
 <hr>
 </div>
 <div id="research-sites-of-best-network" class="section level3">
 <h3><strong>Research sites of BEST network</strong></h3>
-<p>In 2018, nighteen 40 m × 40 m plots along an elevational gradient were set up from 270 m to 1470 m above the sea level in this mountain. The plots were set at intervals of ~100 m in elevation. Within each plot, all woody stems with ≥ 1 cm DBH were tagged and identified to species. There were 11773 individuals with DBH ≥ 1 cm recorded, belonging to 53 families, 103 genera and 153 species.</p>
+<p>In 2018, nighteen 40 m × 40 m plots along an elevational gradient
+were set up from 270 m to 1470 m above the sea level in this mountain.
+The plots were set at intervals of ~100 m in elevation. Within each
+plot, all woody stems with ≥ 1 cm DBH were tagged and identified to
+species. There were 11773 individuals with DBH ≥ 1 cm recorded,
+belonging to 53 families, 103 genera and 153 species.</p>
 <div align="center">
 <p><img src="Pictures/Chebaling-5.jpg" /></p>
 </div>
@@ -402,7 +409,8 @@ $(document).ready(function () {
 </div>
 <div id="principal-investigator" class="section level3">
 <h3><strong>Principal Investigator</strong></h3>
-<p>Chengjin Chu (储诚进): <a href="mailto:chuchjin@mail.sysu.edu.cn">chuchjin@mail.sysu.edu.cn</a></p>
+<p>Chengjin Chu (储诚进): <a
+href="mailto:chuchjin@mail.sysu.edu.cn">chuchjin@mail.sysu.edu.cn</a></p>
 <p><strong>Research Team</strong>:</p>
 <ul>
 <li><p>Buhang Li (Sun Yat-Sen University)</p></li>
@@ -416,7 +424,11 @@ $(document).ready(function () {
 <div id="selected-publications" class="section level3">
 <h3><strong>Selected Publications</strong></h3>
 <ol style="list-style-type: decimal">
-<li>Buhang Li，Zhihong Wu, Yue Bin, Ronggao Xiao, Xiangjin Song, Zhufei Shu, Chengjin Chu. The Chebaling central subtropical evergreen broadleaved forest dynamic plot: Species composition and community structure[M]. Guangdong Science and Technology Press, Guangzhou. 2020.</li>
+<li>Buhang Li，Zhihong Wu, Yue Bin, Ronggao Xiao, Xiangjin Song, Zhufei
+Shu, Chengjin Chu. The Chebaling central subtropical evergreen
+broadleaved forest dynamic plot: Species composition and community
+structure[M]. Guangdong Science and Technology Press, Guangzhou.
+2020.</li>
 </ol>
 <hr>
 </div>
@@ -480,7 +492,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

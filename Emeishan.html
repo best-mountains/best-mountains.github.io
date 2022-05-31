@@ -13,26 +13,35 @@
 
 <title>BEST-Emeishan</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
 <script src="site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="site_libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -44,11 +53,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -61,32 +65,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -97,10 +76,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -117,40 +92,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 66px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h2 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h3 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h4 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h5 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h6 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -178,7 +129,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -190,7 +141,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -201,10 +152,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -216,7 +180,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -283,7 +246,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -302,7 +265,7 @@ $(document).ready(function () {
   <a href="team.html">TEAM</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     MOUNTAINS
      
     <span class="caret"></span>
@@ -363,7 +326,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -375,28 +338,50 @@ $(document).ready(function () {
 <p><br></p>
 <div id="mt.-emei-峨眉山" class="section level2">
 <h2>Mt. Emei (峨眉山)</h2>
-<p>Mt. Emei (29°16’30“<sub>29°43’42"N,103°10’30"</sub>103°37’10”E) is located at the boundary between the southwestern edge of the Sichuan Basin and the southeastern edge of the Qinghai-Xizang Plateau. The difference in elevation between the base and the summit is 2600 meters. It is a world famous for its attractive natural scenery and as one of the sacred mountains of Chinese Buddhism. In 1996, Mt. Emei was designated by UNESCO’s World Heritage program.</p>
+<p>Mt. Emei (29°16’30”<sub>29°43’42”N,103°10’30”</sub>103°37’10”E) is
+located at the boundary between the southwestern edge of the Sichuan
+Basin and the southeastern edge of the Qinghai-Xizang Plateau. The
+difference in elevation between the base and the summit is 2600 meters.
+It is a world famous for its attractive natural scenery and as one of
+the sacred mountains of Chinese Buddhism. In 1996, Mt. Emei was
+designated by UNESCO’s World Heritage program.</p>
 <div align="center">
 <div id="htmlwidget-1523b8724bc6d769281b" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1523b8724bc6d769281b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[29.51095962,103.3312981,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"Mt. Emeishan (峨眉山)",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[29.51095962,29.51095962],"lng":[103.3312981,103.3312981]},"setView":[[29.51095962,103.3312981],8,[]]},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1523b8724bc6d769281b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[29.51095962,103.3312981,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"峨眉山",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[29.51095962,29.51095962],"lng":[103.3312981,103.3312981]},"setView":[[29.51095962,103.3312981],8,[]]},"evals":[],"jsHooks":[]}</script>
 </div>
 <hr>
 <div id="vegetation" class="section level3">
 <h3><strong>Vegetation</strong></h3>
-<p>The natural scenery of Mt. Emei is not only visually attractive, but environmentally complex. The wide variety of habitats have resulted in numerous vegetation types and a rich and highly diverse flora. Hence, the mountain has often been referred to as a natural botanical garden and has attracted numerous botanical researchers from various parts of the world. Through the collection of specimens and on-site investigations, a large number of new species of plants have been discovered.</p>
-<p><a href="Pictures/Emei-2.jpg"><img src="Pictures/Emei-2.JPG" /></a></p>
+<p>The natural scenery of Mt. Emei is not only visually attractive, but
+environmentally complex. The wide variety of habitats have resulted in
+numerous vegetation types and a rich and highly diverse flora. Hence,
+the mountain has often been referred to as a natural botanical garden
+and has attracted numerous botanical researchers from various parts of
+the world. Through the collection of specimens and on-site
+investigations, a large number of new species of plants have been
+discovered.</p>
+<p><a href="Pictures/Emei-2.jpg"><img
+src="Pictures/Emei-2.JPG" /></a></p>
 <hr>
 </div>
 <div id="flora" class="section level3">
 <h3><strong>Flora</strong></h3>
-<p>Modern taxonomic research on the flora of Mount Emei began in the 19th century. In 1887, E. Faber from Great Britain was the first to collect botanical specimens on the mountain. The first Chinese scholar to study there was Professor W.P. Fang. He made remarkable contributions to the study of the flora of Mt. Emei and through his reports attracted numerous specialists and scholars to investigate the flora of Mt. Emei and to collect specimens.</p>
-<p><a href="Pictures/Emei-4.jpg"><img src="Pictures/Emei-4.JPG" /></a></p>
+<p>Modern taxonomic research on the flora of Mount Emei began in the
+19th century. In 1887, E. Faber from Great Britain was the first to
+collect botanical specimens on the mountain. The first Chinese scholar
+to study there was Professor W.P. Fang. He made remarkable contributions
+to the study of the flora of Mt. Emei and through his reports attracted
+numerous specialists and scholars to investigate the flora of Mt. Emei
+and to collect specimens.</p>
+<p><a href="Pictures/Emei-4.jpg"><img
+src="Pictures/Emei-4.JPG" /></a></p>
 <hr>
 </div>
 <div id="fauna" class="section level3">
 <h3><strong>Fauna</strong></h3>
 <p>Coming soon.</p>
-<p><a href="Pictures/Emei-3.jpg"><img src="Pictures/Emei-3.JPG" /></a></p>
+<p><a href="Pictures/Emei-3.jpg"><img
+src="Pictures/Emei-3.JPG" /></a></p>
 <p><img src="Pictures/Emei%20(2).jpg" /></p>
 <hr>
 </div>
@@ -409,17 +394,28 @@ $(document).ready(function () {
 </div>
 <div id="principal-investigator" class="section level3">
 <h3><strong>Principal Investigator</strong></h3>
-<p>Shengbin Chen (陈圣宾): <a href="mailto:chainpin@126.com">chainpin@126.com</a></p>
+<p>Shengbin Chen (陈圣宾): <a
+href="mailto:chainpin@126.com">chainpin@126.com</a></p>
 <p><strong>Research Team</strong>:</p>
 <ul>
-<li><p>Prof. Junhua Hu (Chengdu Institute of Biology, Chinese Academy of Sciences)</p></li>
-<li><p>Xiaoyi Wang (Chengdu Institute of Biology, Chinese Academy of Sciences)</p></li>
+<li><p>Prof. Junhua Hu (Chengdu Institute of Biology, Chinese Academy of
+Sciences)</p></li>
+<li><p>Xiaoyi Wang (Chengdu Institute of Biology, Chinese Academy of
+Sciences)</p></li>
 </ul>
 <hr>
 </div>
 <div id="selected-publications" class="section level3">
 <h3><strong>Selected Publications</strong></h3>
-<p>Coming soon.</p>
+<ol style="list-style-type: decimal">
+<li>Wang, X., Zhong, M., Zhang, J., Si, X., Yang, S., Jiang, J., Hu,
+J.*. Multidimensional amphibian diversity and community structure along
+a 2600 m elevational gradient on the eastern margin of the
+Qinghai-Tibetan Plateau. Zoological Research 43(1): 40-51 <a
+href="doi:10.24272/j.issn.2095-8137.2021.166"
+class="uri">doi:10.24272/j.issn.2095-8137.2021.166</a></li>
+</ol>
+<p><img src="Pictures/BEST-Emei_Cover.jpg" /></p>
 <hr>
 </div>
 <div id="site-support" class="section level3">
@@ -476,7 +472,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

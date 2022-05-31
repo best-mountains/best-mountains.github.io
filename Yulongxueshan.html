@@ -13,26 +13,35 @@
 
 <title>BEST-Yulongxueshan</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
 <script src="site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="site_libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -44,11 +53,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -61,32 +65,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -97,10 +76,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -117,40 +92,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 66px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h2 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h3 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h4 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h5 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
-.section h6 {
-  padding-top: 71px;
-  margin-top: -71px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -178,7 +129,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -190,7 +141,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -201,10 +152,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -216,7 +180,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -283,7 +246,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -302,7 +265,7 @@ $(document).ready(function () {
   <a href="team.html">TEAM</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     MOUNTAINS
      
     <span class="caret"></span>
@@ -363,7 +326,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -375,10 +338,18 @@ $(document).ready(function () {
 <p><br></p>
 <div id="mt.-yulong-云南玉龙雪山" class="section level2">
 <h2>Mt. Yulong (云南玉龙雪山)</h2>
-<p>Mt. Yulong (27°10′–27°40′N, 100°09′–100°20′E) , also named as Jade Dragon Snow Mountain, is located in the northwest of Yunnan province, China. It is located the southeast of the Hengduan Mountains and has a total area of 260 km2. The mountain peak is at 5596 m a.s.l., and it is the southernmost glacierized area in North Hemisphere which is extremely sensitive to climate change. The weather is monsoon climate which include a dry season from November to May and a rainy season from June to October. The mean annual temperature at Yulong Mountain is 12.8°C, and the average annual precipitation is 935 mm. <br></p>
+<p>Mt. Yulong (27°10′–27°40′N, 100°09′–100°20′E) , also named as Jade
+Dragon Snow Mountain, is located in the northwest of Yunnan province,
+China. It is located the southeast of the Hengduan Mountains and has a
+total area of 260 km2. The mountain peak is at 5596 m a.s.l., and it is
+the southernmost glacierized area in North Hemisphere which is extremely
+sensitive to climate change. The weather is monsoon climate which
+include a dry season from November to May and a rainy season from June
+to October. The mean annual temperature at Yulong Mountain is 12.8°C,
+and the average annual precipitation is 935 mm. <br></p>
 <div align="center">
-<div id="htmlwidget-37c9616ef3f21ed13d94" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-37c9616ef3f21ed13d94">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[27.09977236,100.1760214,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"Mt. Jade Dragon Snow (玉龙雪山)",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[27.09977236,27.09977236],"lng":[100.1760214,100.1760214]},"setView":[[27.09977236,100.1760214],8,[]]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-539ecbe57af5c4fd320d" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-539ecbe57af5c4fd320d">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[],[],10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,[],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":[],"setView":[[null,null],8,[]]},"evals":[],"jsHooks":[]}</script>
 </div>
 <div align="center">
 <p><img src="Pictures/Yulong-1.jpg" style="width:20cm" /></p>
@@ -391,33 +362,58 @@ $(document).ready(function () {
 <hr>
 <div id="vegetation" class="section level3">
 <h3><strong>Vegetation</strong></h3>
-<p>Five distinct vegetation types were observed along elevations in our study region. <em>Pinus armandii</em> forest (2600- 2800 m); <em>Pinus armandii</em>, <em>Pinus yunnanensis</em> and <em>Quercus spinosa</em> mixed forest (2800-3000 m); <em>Pinus yunnanensis</em> and <em>Quercus guyavifolia</em> mixed forest (3000-3500m); <em>Quercus aquifolioides</em> forest (3500-3700m); and <em>Quercus aquifolioides</em>, <em>Abies georgei</em> and Rhododendron forest (3700-3900 m).</p>
+<p>Five distinct vegetation types were observed along elevations in our
+study region. <em>Pinus armandii</em> forest (2600- 2800 m); <em>Pinus
+armandii</em>, <em>Pinus yunnanensis</em> and <em>Quercus spinosa</em>
+mixed forest (2800-3000 m); <em>Pinus yunnanensis</em> and <em>Quercus
+guyavifolia</em> mixed forest (3000-3500m); <em>Quercus
+aquifolioides</em> forest (3500-3700m); and <em>Quercus
+aquifolioides</em>, <em>Abies georgei</em> and Rhododendron forest
+(3700-3900 m).</p>
 <div align="center">
 <p><img src="Pictures/Yulong-7.jpg" style="width:20cm" /></p>
 <p><em>Pinus armandii</em> forest</p>
 <p><img src="Pictures/Yulong-8.jpg" style="width:20cm" /></p>
-<p><em>Pinus armandii</em>, <em>Pinus yunnanensis</em> and <em>Quercus spinosa</em> mixed forest</p>
+<p><em>Pinus armandii</em>, <em>Pinus yunnanensis</em> and <em>Quercus
+spinosa</em> mixed forest</p>
 <p><img src="Pictures/Yulong-9.jpg" style="width:20cm" /></p>
 <p><em>Pinus yunnanensis</em> forest</p>
 <p><img src="Pictures/Yulong-10.jpg" style="width:20cm" /></p>
-<p><em>Pinus yunnanensis</em> and <em>Quercus guyavifolia</em> mixed forest</p>
+<p><em>Pinus yunnanensis</em> and <em>Quercus guyavifolia</em> mixed
+forest</p>
 <p><img src="Pictures/Yulong-11.jpg" style="width:20cm" /></p>
 <p><em>Quercus guyavifolia</em> forest</p>
 <p><img src="Pictures/Yulong-12.jpg" style="width:20cm" /></p>
 <p><em>Quercus aquifolioides</em> forest</p>
-<p><img src="Pictures/Yulong-13.jpg" style="width:20cm" /> <img src="Pictures/Yulong-14.jpg" style="width:20cm" /> <img src="Pictures/Yulong-15.jpg" style="width:20cm" /> <img src="Pictures/Yulong-16.jpg" style="width:20cm" /></p>
-<p><em>Quercus aquifolioides</em>, <em>Abies georgei</em> and Rhododendron forest</p>
+<p><img src="Pictures/Yulong-13.jpg" style="width:20cm" /> <img
+src="Pictures/Yulong-14.jpg" style="width:20cm" /> <img
+src="Pictures/Yulong-15.jpg" style="width:20cm" /> <img
+src="Pictures/Yulong-16.jpg" style="width:20cm" /></p>
+<p><em>Quercus aquifolioides</em>, <em>Abies georgei</em> and
+Rhododendron forest</p>
 </div>
 <hr>
 </div>
 <div id="flora" class="section level3">
 <h3><strong>Flora</strong></h3>
-<p>In Yulong mountains, a total of 2028 native seed plant species from 625 genera and 136 families. More than half of the species are herbaceous (66.4 %; 82 families; 426 genera; and 1346 species), and 33.6 % are woody species (290 tree species from 120 genera and 56 families, and 392 shrub species from 133 genera and 62 families; Wang et al. 2007).</p>
+<p>In Yulong mountains, a total of 2028 native seed plant species from
+625 genera and 136 families. More than half of the species are
+herbaceous (66.4 %; 82 families; 426 genera; and 1346 species), and 33.6
+% are woody species (290 tree species from 120 genera and 56 families,
+and 392 shrub species from 133 genera and 62 families; Wang et
+al. 2007).</p>
 <hr>
 </div>
 <div id="research-sites-of-best-network" class="section level3">
 <h3><strong>Research sites of BEST network</strong></h3>
-<p>In 2013-2014, Nineteen 20 m × 50 m plots along an elevational gradient were set up from 2650 m to 3850 m above the sea level in this mountain. The plots were set based on the distinct vegetation types. Within each plot, all woody stems with ≥ 1 cm DBH were tagged and identified to species. There were individuals with DBH ≥ 1 cm recorded, belonging to 22 families, 46 genera and 59 species. Meanwhile, a total of 101 shrub species and 201 herbaceous species were observed in our study plots.</p>
+<p>In 2013-2014, Nineteen 20 m × 50 m plots along an elevational
+gradient were set up from 2650 m to 3850 m above the sea level in this
+mountain. The plots were set based on the distinct vegetation types.
+Within each plot, all woody stems with ≥ 1 cm DBH were tagged and
+identified to species. There were individuals with DBH ≥ 1 cm recorded,
+belonging to 22 families, 46 genera and 59 species. Meanwhile, a total
+of 101 shrub species and 201 herbaceous species were observed in our
+study plots.</p>
 <div align="center">
 <p><img src="Pictures/Yulong-17.jpg" style="width:20cm" /></p>
 <p>The location of 19 long-term monitoring plots along elevation</p>
@@ -433,17 +429,35 @@ $(document).ready(function () {
 </div>
 <div id="principal-investigator" class="section level3">
 <h3><strong>Principal Investigator</strong></h3>
-<p>Yahuang Luo (罗亚皇): <a href="mailto:luoyahuang@mail.kib.ac.cn">luoyahuang@mail.kib.ac.cn</a></p>
-<p>Jie Liu (刘杰): <a href="mailto:liujie@mail.kib.ac.cn">liujie@mail.kib.ac.cn</a></p>
+<p>Yahuang Luo (罗亚皇): <a
+href="mailto:luoyahuang@mail.kib.ac.cn">luoyahuang@mail.kib.ac.cn</a></p>
+<p>Jie Liu (刘杰): <a
+href="mailto:liujie@mail.kib.ac.cn">liujie@mail.kib.ac.cn</a></p>
 <hr>
 </div>
 <div id="selected-publications" class="section level3">
 <h3><strong>Selected Publications</strong></h3>
 <ol style="list-style-type: decimal">
-<li><strong>Ya-Huang Luo</strong>, Marc W. Cadotte, Kevin S. Burgess, <strong>Jie Liu</strong>, Shao-Lin Tan, Kun Xu, Jia-Yun Zou, De-Zhu Li<em>, Lian-Ming Gao</em>. Greater than the sum of the parts: how the species composition in different forest strata influence ecosystem function. <em>Ecology Letters</em>. 2019. 22: 1449–1461.</li>
-<li><strong>Ya-Huang Luo</strong>, Marc W. Cadotte, Kevin S. Burgess, <strong>Jie Liu</strong>, Shao-Lin Tan, Kun Xu, De-Zhu Li<em>, Lian-Ming Gao</em>. Forest community assembly is driven by different strata-dependent mechanisms along an elevational gradient. <em>Journal of Biogeography</em>. 2019. 46: 2174– 2187.</li>
-<li><strong>Ya-Huang Luo</strong>, <strong>Jie Liu</strong>, Shao-Lin Tan, Marc W. Cadotte, Yue-Hua Wang, Kun Xu, De Zhu Li<em>, Lian-Ming Gao</em>. Trait-based community assembly along subalpine elevational gradients: Quantifying the roles of environmental factors in inter- and intraspecific variability. <em>PLoS ONE</em>. 2016. 11: e0155749.</li>
-<li><strong>Ya-Huang Luo</strong>, <strong>Jie Liu</strong>, Shao-Lin Tan, Marc W. Cadotte, Kun Xu, Lian-Ming Gao <em>, De-Zhu Li </em>. Trait variation and functional diversity maintenance of understory coexisting herbaceous species along elevational gradient in Yulong Mountain, Southwest China. <em>Plant Diversity</em>. 2016. 38: 303-311.</li>
+<li><strong>Ya-Huang Luo</strong>, Marc W. Cadotte, Kevin S. Burgess,
+<strong>Jie Liu</strong>, Shao-Lin Tan, Kun Xu, Jia-Yun Zou, De-Zhu
+Li<em>, Lian-Ming Gao</em>. Greater than the sum of the parts: how the
+species composition in different forest strata influence ecosystem
+function. <em>Ecology Letters</em>. 2019. 22: 1449–1461.</li>
+<li><strong>Ya-Huang Luo</strong>, Marc W. Cadotte, Kevin S. Burgess,
+<strong>Jie Liu</strong>, Shao-Lin Tan, Kun Xu, De-Zhu Li<em>, Lian-Ming
+Gao</em>. Forest community assembly is driven by different
+strata-dependent mechanisms along an elevational gradient. <em>Journal
+of Biogeography</em>. 2019. 46: 2174– 2187.</li>
+<li><strong>Ya-Huang Luo</strong>, <strong>Jie Liu</strong>, Shao-Lin
+Tan, Marc W. Cadotte, Yue-Hua Wang, Kun Xu, De Zhu Li<em>, Lian-Ming
+Gao</em>. Trait-based community assembly along subalpine elevational
+gradients: Quantifying the roles of environmental factors in inter- and
+intraspecific variability. <em>PLoS ONE</em>. 2016. 11: e0155749.</li>
+<li><strong>Ya-Huang Luo</strong>, <strong>Jie Liu</strong>, Shao-Lin
+Tan, Marc W. Cadotte, Kun Xu, Lian-Ming Gao <em>, De-Zhu Li </em>. Trait
+variation and functional diversity maintenance of understory coexisting
+herbaceous species along elevational gradient in Yulong Mountain,
+Southwest China. <em>Plant Diversity</em>. 2016. 38: 303-311.</li>
 </ol>
 <hr>
 </div>
@@ -451,7 +465,8 @@ $(document).ready(function () {
 <h3><strong>Site Support</strong></h3>
 <p>This site has been supported by:</p>
 <ul>
-<li><p>Lijiang National Field Research Station of Forest Ecosystem, Kunming Institute of Botany, Chinese Academy of Sciences</p></li>
+<li><p>Lijiang National Field Research Station of Forest Ecosystem,
+Kunming Institute of Botany, Chinese Academy of Sciences</p></li>
 <li><p>National Natural Science Foundation of China</p></li>
 </ul>
 <hr>
@@ -505,7 +520,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
