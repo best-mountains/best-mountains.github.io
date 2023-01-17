@@ -33,6 +33,12 @@ navbar:
           href: Emeishan.html
         - text: "Bawangling (海南霸王岭)"
           href: Bawangling.html
+        - text: "Qinling (陕西秦岭)"
+          href: Qinling.html
+        - text: "Lushan (江西庐山)"
+          href: Lushan.html
+        - text: "Lishan (山西历山)"
+          href: Lishan.html
         - text: "WestTianshan (新疆西天山)"
           href: WestTianshan.html
     - text: "RESEARCH"
