@@ -13,7 +13,7 @@
 
 <title>BEST-Qinling</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
@@ -32,7 +32,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
@@ -151,11 +151,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -184,8 +188,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -193,16 +197,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -305,6 +302,15 @@ $(document).ready(function () {
       <a href="Bawangling.html">Bawangling (海南霸王岭)</a>
     </li>
     <li>
+      <a href="Qinling.html">Qinling (陕西秦岭)</a>
+    </li>
+    <li>
+      <a href="Lushan.html">Lushan (江西庐山)</a>
+    </li>
+    <li>
+      <a href="Lishan.html">Lishan (山西历山)</a>
+    </li>
+    <li>
       <a href="WestTianshan.html">WestTianshan (新疆西天山)</a>
     </li>
   </ul>
@@ -338,22 +344,61 @@ $(document).ready(function () {
 <p><br> <br> <br></p>
 <div id="mt.-qinling-秦岭" class="section level2">
 <h2>Mt. Qinling (秦岭)</h2>
-<p>Will update soon.</p>
+<p>The Qinling Mountains, are a major east–west mountain range mainly in
+southern Shaanxi Province, China. The Qinling Mountains provide a
+natural geographical boundary between South and North China. The highest
+mountain is Mount Taibai at 3767 m a. s. l. The climate is transitional
+from subtropical to temperate, with annual precipitation at about 850 to
+950 mm.</p>
 <div align="center">
-<div id="htmlwidget-62518ba06775d81814ef" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-62518ba06775d81814ef">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[33.955682090924,107.763261383733,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"秦岭",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[33.955682090924,33.955682090924],"lng":[107.763261383733,107.763261383733]},"setView":[[33.955682090924,107.763261383733],8,[]]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f2e2e660188e30cc91dc" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-f2e2e660188e30cc91dc">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[33.955682090924,107.763261383733,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"秦岭",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[33.955682090924,33.955682090924],"lng":[107.763261383733,107.763261383733]},"setView":[[33.955682090924,107.763261383733],8,[]]},"evals":[],"jsHooks":[]}</script>
 </div>
 <p><a href="Pictures/Qinling-1.jpg" id="id" class="class" width="30%"
 height="30%"><img src="Pictures/Qinling-1.jpg" /></a></p>
 <hr>
 <div id="vegetation-and-flora" class="section level3">
 <h3><strong>Vegetation and Flora</strong></h3>
-<p>Will update soon.</p>
+<p>The vegetations show an obvious vertical distribution zone, including
+deciduous broad-leaved forest, coniferous and broad-leaved mixed forest,
+dark coniferous forest, bright coniferous forest and alpine shrub
+meadow.</p>
+<p>There are 3800 plant species and 2,931 of them are seed plants,
+accounting for 12% of the total number of seed plants in China. Five
+plant species, including Chinese yew (<em>Taxus chinensis</em>) and
+Chinese dove tree (<em>Davidia Involucrata</em>), belong to Class I
+national protected plant species and 45 belongs to Class II national
+protected plant species (Zhao et al., 2020. Journal of Geographical
+Sciences: 30(4):642-656).</p>
+<div align="center">
+<p><a href="Pictures/Qinling-2.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Qinling-2.jpg" /></a></p>
+<p><em>Taxus wallichiana var. chinensis</em> <br></p>
+<hr>
+</div>
+<div id="fauna" class="section level3">
+<h3><strong>Fauna</strong></h3>
+<p>According to investigations, so far, about 587 wild animal species
+have been found on Qinling Mountains, including flagship species, such
+as, giant panda, takin, Sichuan snub-nosed monkey, red panda, and
+clouded leopard.</p>
+<div align="center">
+<p><a href="Pictures/Qinling-3.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Qinling-3.jpg" /></a></p>
+<p><a href="Pictures/Qinling-4.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Qinling-4.jpg" /></a></p>
+<p>Takin and Sichuan snub-nosed monkey observed by infrared cameras</p>
 <hr>
 </div>
 <div id="research-sites-of-best-network" class="section level3">
 <h3><strong>Research sites of BEST network</strong></h3>
-<p>Will update soon.</p>
+<div align="center">
+<p><a href="Pictures/Qinling-5.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Qinling-5.jpg" /></a></p>
+<p>Tree seedling survey in the plots</p>
+<p><a href="Pictures/Qinling-6.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Qinling-6.jpg" /></a></p>
+<p>Bryophytes survey in the plots <br></p>
 <hr>
 </div>
 <div id="principal-investigator" class="section level3">
@@ -364,7 +409,9 @@ href="mailto:zqhao@nwpu.edu.cn">zqhao@nwpu.edu.cn</a></p>
 href="mailto:shihong.jia@nwpu.edu.cn">shihong.jia@nwpu.edu.cn</a></p>
 <p><strong>Research Team</strong>:</p>
 <ul>
-<li>Will update soon.</li>
+<li><p>Dr. Zuoqiang Yuan (Northwestern Polytechnical
+University)</p></li>
+<li><p>Dr. Qiulong Yin (Northwestern Polytechnical University)</p></li>
 </ul>
 <hr>
 </div>
@@ -378,6 +425,8 @@ href="mailto:shihong.jia@nwpu.edu.cn">shihong.jia@nwpu.edu.cn</a></p>
 <p>This site has been supported by:</p>
 <ul>
 <li>National Natural Science Foundation of China</li>
+<li>School of Ecology and Environment, Northwest Polytechnical
+University</li>
 </ul>
 <hr>
 </div>
