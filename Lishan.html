@@ -13,7 +13,7 @@
 
 <title>BEST-Lishan</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
@@ -32,7 +32,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
@@ -151,11 +151,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -184,8 +188,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -193,16 +197,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -347,22 +344,69 @@ $(document).ready(function () {
 <p><br> <br> <br></p>
 <div id="mt.-lishan-历山" class="section level2">
 <h2>Mt. Lishan (历山)</h2>
-<p>Will update soon.</p>
-<div align="center">
-<div id="htmlwidget-f6b159460d597c9261ec" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f6b159460d597c9261ec">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[35.4180734714257,111.961939068885,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"历山",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.4180734714257,35.4180734714257],"lng":[111.961939068885,111.961939068885]},"setView":[[35.4180734714257,111.961939068885],8,[]]},"evals":[],"jsHooks":[]}</script>
-</div>
+<p>The site was conducted in Lishan National Nature Reserve
+(111°51′-112°5′E; 35°16′-35°27′N), located at the southern Zhongtiao
+Mountains in Shanxi province, China. The mountain peak is at 2,358 m
+a.s.l. The region is characterized by a warm temperate continental
+monsoon, with mean annual temperature of 13.3°C and extreme high
+temperatures of 26.1℃ recorded in July. The mean annual precipitation is
+667.6 mm, ranging from 600 to 800 mm.</p>
 <p><a href="Pictures/Lishan-1.jpg" id="id" class="class" width="30%"
 height="30%"><img src="Pictures/Lishan-1.jpg" /></a></p>
+<p><a href="Pictures/Lishan-2.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Lishan-2.jpg" /></a></p>
+<div align="center">
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a9d8789a463926971b9c" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-a9d8789a463926971b9c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[35.4180734714257,111.961939068885,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"Lishan (历山)",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[35.4180734714257,35.4180734714257],"lng":[111.961939068885,111.961939068885]},"setView":[[35.4180734714257,111.961939068885],8,[]]},"evals":[],"jsHooks":[]}</script>
+</div>
 <hr>
-<div id="vegetation-and-flora" class="section level3">
-<h3><strong>Vegetation and Flora</strong></h3>
-<p>Will update soon.</p>
+<div id="vegetation-flora-and-fauna" class="section level3">
+<h3><strong>Vegetation, Flora and Fauna</strong></h3>
+<p>This region is in the transition from the subtropical zone to the
+warm temperate zone, and as the northern margins of many subtropical
+species’ natural distribution, such as <em>Cercidiphyllum
+japonicum</em>, <em>Sinowilsonia henryi</em>, <em>Rhododendron
+micranthum</em>, etc. This reserve has a forest coverage of 90.7% and
+warm-temperate deciduous broadleaved forest as the typical zonal
+vegetation. Five distinct vegetation types were observed along
+elevations in our region. Prairie shrubland (800–1200 m), coniferous and
+broad-leaved mixed forests (1200-1800 m), deciduous broadleaved forests
+(1500-2000 m), mountainous deciduous broadleaved forests (2000-2200 m),
+and subalpine meadow (2000-2358 m).</p>
+<p>According to the historical reports, there are 99 moss species in 70
+genera of 34 families; 59 fern species in 27 genera of 16 families; and
+1272 seed plant species in 512 genera of 112 families, including 8
+gymnosperms species in 5 genera of 4 families and 1264 angiosperms
+species in 507 genera of 108 families.</p>
+<p>According to the historical reports, there are 380 wild animals in
+230 genera of 92 families. Among them, 48 mammals species in 46 genera
+of 18 families; 13 amphibian species in 11 genera of 6 families; 25
+reptile species in 18 genera of 7 families; 294 bird species in 155
+genera of 61 families.</p>
+<div align="center">
+
+<p><a href="Pictures/Lishan-3.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Lishan-3.jpg" /></a></p>
+<p>Deciduous broadleaved forests</p>
+<p><a href="Pictures/Lishan-4.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Lishan-4.jpg" /></a></p>
+<p>Coniferous and broad-leaved mixed forests</p>
+<p><a href="Pictures/Lishan-5.jpg" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Lishan-5.jpg" /></a></p>
+<p>Mountainous deciduous broadleaved forests <br></p>
 <hr>
 </div>
 <div id="research-sites-of-best-network" class="section level3">
 <h3><strong>Research sites of BEST network</strong></h3>
-<p>Will update soon.</p>
+<p>In 2022, fifteen 20 m × 20 m plots along an elevational gradient were
+set up, spanning 1,325 m in elevation from 894 to 2,219 m above sea
+level (asl) in this mountain. The plots were set at intervals of ~100 m
+in elevation. Within each plot, all woody stems with ≥ 1 cm DBH were
+tagged and identified to species. There were 2045 individuals with DBH ≥
+1 cm recorded, belonging to 22 families, 44 genera and 61 species.</p>
+<div align="center">
+<p><a href="Pictures/Lishan-6.png" id="id" class="class" width="30%"
+height="30%"><img src="Pictures/Lishan-6.png" /></a> <br></p>
 <hr>
 </div>
 <div id="principal-investigator" class="section level3">
@@ -371,7 +415,9 @@ height="30%"><img src="Pictures/Lishan-1.jpg" /></a></p>
 href="mailto:songhoujuan@163.com">songhoujuan@163.com</a></p>
 <p><strong>Research Team</strong>:</p>
 <ul>
-<li>Will update soon.</li>
+<li>Xiuqing Yang (Shanxi Agricultural University)</li>
+<li>Xin Wang (Shanxi Vocational University of Engineering Science and
+Technology)</li>
 </ul>
 <hr>
 </div>
@@ -384,7 +430,9 @@ href="mailto:songhoujuan@163.com">songhoujuan@163.com</a></p>
 <h3><strong>Site Support</strong></h3>
 <p>This site has been supported by:</p>
 <ul>
-<li>Shanxi Agricultural University</li>
+<li>Science Foundation for Youths of Shanxi Province</li>
+<li>College of Forestry, Shanxi Agricultural University</li>
+<li>Lishan National Natural Reserve</li>
 </ul>
 <hr>
 </div>
