@@ -41,6 +41,8 @@ navbar:
           href: Lishan.html
         - text: "WestTianshan (新疆西天山)"
           href: WestTianshan.html
+        - text: "Changbaishan (吉林长白山)"
+          href: Changbaishan.html         
     - text: "RESEARCH"
       href: research.html
     - text: "PUBLICATIONS"

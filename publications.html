@@ -13,7 +13,7 @@
 
 <title>Publications</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
@@ -141,11 +141,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -174,8 +178,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -183,16 +187,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -306,6 +303,9 @@ $(document).ready(function () {
     <li>
       <a href="WestTianshan.html">WestTianshan (新疆西天山)</a>
     </li>
+    <li>
+      <a href="Changbaishan.html">Changbaishan (吉林长白山)</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -345,24 +345,6 @@ class="section level3">
 <div class = "row">
 <div class = "col-md-10">
 <li>
-Luo, Y., Ma, L., …, Li, D., Liu, J., Gao, L. The diversity of
-mycorrhiza-associated fungi and trees shapes subtropical mountain forest
-ecosystem functioning. <strong><em>Journal of
-Biogeography</em></strong>, in press <a
-href="https://doi.org/10.1111/jbi.14563">doi:10.1111/jbi.14563</a>
-</div>
-<div class="col-md-2">
-<div class="altmetric-embed" data-doi="10.1111/jbi.14563"
-data-hide-no-mentions="true">
-
-</div>
-<p><span class="__dimensions_badge_embed__" data-doi="10.1111/jbi.14563"
-data-style="small_rectangle"></span></p>
-</div>
-</div>
-<div class = "row">
-<div class = "col-md-10">
-<li>
 Zhang, B., Jiang, Y., …, Chu, C. Elevational gradients do not
 significantly alter soil microbial respiration and temperature
 sensitivity in a subtropical forest. <strong>Preprint</strong> <a
@@ -382,7 +364,66 @@ data-style="small_rectangle"></span></p>
 <p><br></p>
 </div>
 <div id="section" class="section level4">
+<h4>2024</h4>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+He, X., Zeng, L., …, Yang, Y. Parental material and climate jointly
+determine the biomass and diversity of soil microbial communities along
+an elevational gradient on a subtropical karst mountain.
+<strong><em>Journal of Biogeography</em></strong>, in press <a
+href="https://doi.org/10.1111/jbi.14814">doi:10.1111/jbi.14814</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1111/jbi.14814"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__" data-doi="10.1111/jbi.14814"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<p><br></p>
+</div>
+<div id="section-1" class="section level4">
 <h4>2023</h4>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+Zeng, L., He, X., Zhu, G., Zhou, L., Luo, M., Yin, X., … &amp; Yang, Y.
+Bedrock and climate jointly control microbial necromass along a
+subtropical elevational gradient. <strong><em>Applied Soil
+Ecology</em></strong>, 189:104902 <a
+href="https://doi.org/10.1016/j.apsoil.2023.104902">doi:10.1016/j.apsoil.2023.104902</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1016/j.apsoil.2023.104902"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__"
+data-doi="10.1016/j.apsoil.2023.104902"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+Luo, Y., Ma, L., …, Li, D., Liu, J., Gao, L. The diversity of
+mycorrhiza-associated fungi and trees shapes subtropical mountain forest
+ecosystem functioning. <strong><em>Journal of
+Biogeography</em></strong>, 50: 715-729 <a
+href="https://doi.org/10.1111/jbi.14563">doi:10.1111/jbi.14563</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1111/jbi.14563"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__" data-doi="10.1111/jbi.14563"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
 <div class = "row">
 <div class = "col-md-10">
 <li>
@@ -421,7 +462,7 @@ data-style="small_rectangle"></span></p>
 </div>
 <p><br></p>
 </div>
-<div id="section-1" class="section level4">
+<div id="section-2" class="section level4">
 <h4>2022</h4>
 <div class = "row">
 <div class = "col-md-10">
@@ -596,7 +637,7 @@ data-style="small_rectangle"></span></p>
 </div>
 <p><br></p>
 </div>
-<div id="section-2" class="section level4">
+<div id="section-3" class="section level4">
 <h4>2021</h4>
 <div class = "row">
 <div class = "col-md-10">
@@ -693,7 +734,7 @@ data-style="small_rectangle"></span></p>
 </div>
 <p><br></p>
 </div>
-<div id="section-3" class="section level4">
+<div id="section-4" class="section level4">
 <h4>2020</h4>
 <div class = "row">
 <div class = "col-md-10">
@@ -800,7 +841,7 @@ data-style="small_rectangle"></span></p>
 </div>
 <p><br></p>
 </div>
-<div id="section-4" class="section level4">
+<div id="section-5" class="section level4">
 <h4>2019</h4>
 <div class = "row">
 <div class = "col-md-10">
