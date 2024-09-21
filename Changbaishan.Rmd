@@ -1,0 +1,79 @@
+---
+title: "BEST-Changbaishan"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br>
+<br>
+<br>
+
+## Mt. Changbai (长白山)
+
+will update soon
+
+<div align="center">
+```{r DT, echo=FALSE, message=FALSE, warning=FALSE}
+# example: https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/leaflet-r/
+library(dplyr)
+library(ggplot2)
+library(rjson)
+library(jsonlite)
+library(leaflet)
+library(RCurl)
+library(openxlsx)
+dat <- read.xlsx("I:\\Research\\BEST\\BEST_Documents\\Locations_Best_Current.xlsx")
+dat <- dat[which(dat$Name=="Changbaishan"),]
+best_map <- leaflet() %>%
+  addProviderTiles("Esri.NatGeoWorldMap") %>%
+  addCircleMarkers(color = "red", stroke = FALSE, fillOpacity = 0.5, lng=dat$long, lat=dat$lat, popup=dat$Name2)%>%
+  setView(dat$long[1], dat$lat[1], zoom = 8)
+best_map
+```
+</div>
+
+<hr>
+
+### **Vegetation and Flora**
+
+will update soon
+
+<br>
+
+<hr>
+
+### **Fauna**
+
+will update soon
+
+
+<hr>
+
+### **Research sites of BEST network**
+
+will update soon
+
+<hr>
+
+### **Principal Investigator**
+
+Fangshuai (房帅): [fangshuai@iae.ac.cn](mailto:fangshuai@iae.ac.cn)
+
+<hr>
+
+### **Selected Publications**
+
+Will update soon.
+
+<hr>
+
+### **Site Support**
+
+This site has been supported by:
+
+-   National Natural Science Foundation of China
+
+<hr>

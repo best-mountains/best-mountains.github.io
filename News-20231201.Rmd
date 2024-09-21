@@ -1,0 +1,38 @@
+---
+title: "News-20231201"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br>
+
+<div align="center">
+### 西北工业大学贾仕宏等在Journal of Ecology发表植物幼苗虫食与植物多样性的论文
+</div>
+
+<br>
+
+原文链接：https://jecologyblog.com/2023/12/04/neighbouring-tree-effects-on-leaf-herbivory-why-should-we-care-about-insect-specialization/
+
+### BEST山地：陕西秦岭
+<br>
+
+Neighbouring tree effects on leaf herbivory: why should we care about insect specialization?
+
+Shihong Jia and Bastien Castagneyrol discuss their article: ‘Neighbouring tree effects on leaf herbivory: insect specialization matters more than host plant leaf traits.’
+
+Background
+
+Insect herbivores feed on plants and play a crucial role in determining plant performance, population, and community dynamics. This role is particularly significant in forests where insect herbivores can change the composition of the canopy by damaging seedlings and saplings. But how is the strength of insect herbivory influenced by a plant’s neighbours?
+
+This is not a novel question. For example, the Janzen-Connell hypothesis suggests that insect herbivores may put more pressure on seedlings or saplings that are growing close to adult trees of the same species. In other words, plants surrounded by more diverse neighbours may experience less pressure from insect herbivores.
+
+An increasing number of studies that have looked at how neighbouring trees affect insect herbivory in highly controlled experiments. Researchers have found that mixed stands of trees are more resistant to herbivory than monocultures. The reasons for this can be complex. For example, a previous study has shown that neighbouring trees cause modifications to leaf traits which helps protect plants from insects.
+
+There is strong experimental support in favour of a beneficial effect of tree diversity on tree resistance to insect herbivores. Although highly controlled experiments are powerful tools to isolate the factors effecting herbivory, they often oversimplify the reality. Hence, a question arises: does tree diversity reduce insect herbivory in young trees in the highly complex world of forests, and if so, how?
+
+
+More details in the blog of Journal of Ecology: https://jecologyblog.com/2023/12/04/neighbouring-tree-effects-on-leaf-herbivory-why-should-we-care-about-insect-specialization/

@@ -1,0 +1,81 @@
+---
+title: "Data"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br> <br> <br>
+
+<p style="color:darkgreen">
+
+## ***Woody plant species list***
+
+</p>
+
+<br>
+
+```{r DT, echo=FALSE, message=FALSE, warning=FALSE}
+library(openxlsx)
+library(DT)
+dat <- read.xlsx("I:\\Research\\BEST\\BEST_Documents\\Plant Composition Data Summary_AllSites.xlsx")
+dat <- unique(dat[,c(1,9:12)])
+dat <- dat[-which(is.na(dat$spLatin_FOC)),]
+colnames(dat) <- c("Mountain", "SpeciesName (Chinese)", "LatinName", "Family", "Genus")
+dat <- dat[sample(1:nrow(dat), nrow(dat)),] # change to random order
+# add the hyperlink to Flora of China
+urlsFOC <- paste("http://iplant.cn/info/", dat$LatinName, "?t=foc", sep="")
+urlsFOC <- gsub(" ", "%20", urlsFOC)
+dat$LatinName <- paste0('<a  target=_blank href=', urlsFOC, '>', dat$LatinName,'</a>' )
+urlsCN <- gsub("t=foc", "t=z", urlsFOC)
+dat[,2] <- paste0('<a  target=_blank href=', urlsCN, '>', dat[,2],'</a>' )
+urlsPic <- gsub("t=foc", "t=p", urlsFOC)
+dat$Pictures <- paste0('<a  target=_blank style="color:green" href=', urlsPic, '>',"Pictures",'</a>' )
+rm(urlsFOC, urlsCN, urlsPic)
+datatable(dat, filter="top", escape = F, option=list(pageLength = 10, columnDefs=list(list(targets=6, class="dt-center"))))%>%formatStyle(columns = 3, fontStyle = "italic")
+```
+
+<br>
+
+<p style="color:darkgreen">
+
+## ***Bryophyte plant list***
+Coming soon.
+</p>
+
+<br>
+
+<p style="color:darkgreen">
+
+## ***Butterfly species list***
+
+</p>
+
+<br>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(DT)
+img_uri <- function(x) { sprintf('<img src="%s"/>', knitr::image_uri(x)) }
+
+setwd("I:\\Research\\BEST\\Tianmushan\\Data_Tianmushan\\Butterfly_Tianmushan\\Data_Final\\生态照")
+dirs <- dir(include.dirs=TRUE,recursive=T,pattern=".jpg")
+data = data.frame(Site="Tianmushan", Family=do.call(rbind,strsplit(dirs,"/"))[,1], Name_Chinese=unlist(strsplit(do.call(rbind,strsplit(do.call(rbind,strsplit(dirs,"/"))[,2],"_"))[,2],".jpg")), Name_Latin=do.call(rbind,strsplit(do.call(rbind,strsplit(dirs,"/"))[,2],"_"))[,1], Picture=NA)
+for(i in 1:nrow(data)){
+  data$Picture[i] <- img_uri(dirs[i])
+}
+datatable(data, escape = FALSE, option=list(columnDefs=list(list(targets=1:5, class="dt-center"))))%>%formatStyle(columns = 4, fontStyle = "italic")
+```
+
+<br>
+
+<p style="color:darkgreen">
+
+## ***Microclimate data***
+
+Coming Soon.
+
+</p>
+
+<br>

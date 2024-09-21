@@ -1,0 +1,99 @@
+---
+title: "BEST-Emeishan"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br>
+
+## Mt. Emei (峨眉山)
+
+Mt. Emei (29°16'30"~29°43'42"N,103°10'30"~103°37'10"E) is located at the boundary between the southwestern edge of the Sichuan Basin and the southeastern edge of the Qinghai-Xizang Plateau. The difference in elevation between the base and the summit is 2600 meters. It is a world famous for its attractive natural scenery and as one of the sacred mountains of Chinese Buddhism. In 1996, Mt. Emei was designated by UNESCO's World Heritage program.
+
+<div align="center">
+```{r DT, echo=FALSE, message=FALSE, warning=FALSE}
+# example: https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/leaflet-r/
+library(dplyr)
+library(ggplot2)
+library(rjson)
+library(jsonlite)
+library(leaflet)
+library(RCurl)
+library(openxlsx)
+dat <- read.xlsx("I:\\Research\\BEST\\BEST_Documents\\Locations_Best_Current.xlsx")
+dat <- dat[which(dat$Name=="Emeishan"),]
+best_map <- leaflet() %>%
+  addProviderTiles("Esri.NatGeoWorldMap") %>%
+  addCircleMarkers(color = "red", stroke = FALSE, fillOpacity = 0.5, lng=dat$long, lat=dat$lat, popup=dat$NameCN)%>%
+  setView(dat$long[1], dat$lat[1], zoom = 8)
+best_map
+```
+</div>
+
+<hr>
+
+### **Vegetation**
+
+The natural scenery of Mt. Emei is not only visually attractive, but environmentally complex. The wide variety of habitats have resulted in numerous vegetation types and a rich and highly diverse flora. Hence, the mountain has often been referred to as a natural botanical garden and has attracted numerous botanical researchers from various parts of the world. Through the collection of specimens and on-site investigations, a large number of new species of plants have been discovered.
+
+[![](Pictures/Emei-2.jpg)](Pictures/Emei-2.jpg)
+
+<hr>
+
+### **Flora**
+
+Modern taxonomic research on the flora of Mount Emei began in the 19th century. In 1887, E. Faber from Great Britain was the first to collect botanical specimens on the mountain. The first Chinese scholar to study there was Professor W.P. Fang. He made remarkable contributions to the study of the flora of Mt. Emei and through his reports attracted numerous specialists and scholars to investigate the flora of Mt. Emei and to collect specimens.
+
+[![](Pictures/Emei-4.jpg)](Pictures/Emei-4.jpg)
+
+
+<hr>
+
+### **Fauna**
+
+Coming soon.
+
+[![](Pictures/Emei-3.jpg)](Pictures/Emei-3.jpg)
+
+![](Pictures/Emei (2).jpg)
+
+<hr>
+
+### **Research sites of BEST network**
+
+![](Pictures/Emei (1).jpg)
+
+![](Pictures/Emei (4).jpg)
+
+![](Pictures/Emei (3).jpg)
+
+<hr>
+
+### **Principal Investigator**
+
+Shengbin Chen (陈圣宾): [chainpin@126.com](mailto:chainpin@126.com)
+
+**Research Team**:
+
+-  Prof. Junhua Hu (Chengdu Institute of Biology, Chinese Academy of Sciences)
+
+-  Xiaoyi Wang (Chengdu Institute of Biology, Chinese Academy of Sciences)
+
+<hr>
+
+### **Selected Publications**
+
+1) Wang, X., Zhong, M., Zhang, J., Si, X., Yang, S., Jiang, J., Hu, J.*. Multidimensional amphibian diversity and community structure along a 2600 m elevational gradient on the eastern margin of the Qinghai-Tibetan Plateau. Zoological Research 43(1): 40-51 doi:10.24272/j.issn.2095-8137.2021.166
+
+![](Pictures/BEST-Emei_Cover.jpg)
+
+<hr>
+
+### **Site Support**
+
+Coming soon.
+
+<hr>

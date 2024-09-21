@@ -1,0 +1,26 @@
+---
+title: "About us"
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![](Pictures/1st_page.png)
+
+```{r DT, echo=FALSE, message=FALSE, warning=FALSE}
+library(openxlsx)
+library(DT)
+img_uri <- function(x) {sprintf('<img src="%s"/>', knitr::image_uri(x)) }
+setwd("C:\\Users\\Jian\\Documents\\GitHub\\best-mountains.github.io")
+dat <- read.xlsx("BEST_TeamMembers.xlsx")
+for(i in 1:nrow(dat)){
+  dat$Members[i] <- img_uri(dat$Members[i])
+}
+dat$Name <- paste0('<a  target=_blank style="color:green" href=', dat$Website, '>',dat$Name,'</a>')
+colnames(dat)[4] <- "Research Interests"
+datatable(dat[,1:4], escape = FALSE, rownames=F, option=list(pageLength = 50,lengthChange = FALSE, columnDefs=list(list(targets=1:3, class="dt-center")), sDom  = '<"top">lrt<"bottom">ip',dom = 't'))%>%formatStyle(columns = 4, fontStyle = "italic")
+```

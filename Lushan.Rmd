@@ -1,0 +1,82 @@
+---
+title: "BEST-Lushan"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br>
+<br>
+<br>
+
+## Mt. Lushan (庐山)
+
+Will update soon.
+
+<div align="center">
+```{r DT, echo=FALSE, message=FALSE, warning=FALSE}
+# example: https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/leaflet-r/
+library(dplyr)
+library(ggplot2)
+library(rjson)
+library(jsonlite)
+library(leaflet)
+library(RCurl)
+library(openxlsx)
+dat <- read.xlsx("I:\\Research\\BEST\\BEST_Documents\\Locations_Best_Current.xlsx")
+dat <- dat[which(dat$Name=="Lushan"),]
+best_map <- leaflet() %>%
+  addProviderTiles("Esri.NatGeoWorldMap") %>%
+  addCircleMarkers(color = "red", stroke = FALSE, fillOpacity = 0.5, lng=dat$long, lat=dat$lat, popup=dat$NameCN)%>%
+  setView(dat$long[1], dat$lat[1], zoom = 8)
+best_map
+```
+</div>
+
+[![](Pictures/Lushan-1.jpg)](Pictures/Lushan-1.jpg){#id .class width=30% height=30%}
+
+
+<hr>
+
+### **Vegetation and Flora**
+
+Will update soon.
+
+
+<hr>
+
+
+### **Research sites of BEST network**
+
+Will update soon.
+
+<hr>
+
+### **Principal Investigator**
+
+Zhaochen Zhang (张昭臣): [sean19880305@163.com](mailto:sean19880305@163.com)
+
+
+**Research Team**:
+
+-   Will update soon.
+
+
+
+<hr>
+
+### **Selected Publications**
+
+Will update soon.
+
+<hr>
+
+### **Site Support**
+
+This site has been supported by:
+
+-   Lushan Botanical Garden, CAS
+
+<hr>
