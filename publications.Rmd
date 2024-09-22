@@ -40,7 +40,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <div class = "row">
 <div class = "col-md-10">
-<li> He, X., Zeng, L., ..., Yang, Y. Parental material and climate jointly determine the biomass and diversity of soil microbial communities along an elevational gradient on a subtropical karst mountain. __*Journal  Biogeography*__, in press [doi:10.1111/jbi.14814](https://doi.org/10.1111/jbi.14814)
+<li> He, X., Zeng, L., ..., Yang, Y. Parental material and climate jointly determine the biomass and diversity of soil microbial communities along an elevational gradient on a subtropical karst mountain. __*Journal of Biogeography*__, in press [doi:10.1111/jbi.14814](https://doi.org/10.1111/jbi.14814)
 </div>
 <div class = "col-md-2">
 <div data-doi="10.1111/jbi.14814" data-hide-no-mentions="true" class="altmetric-embed"></div>
