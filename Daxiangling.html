@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>BEST-Daxiangling</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
+<script src="site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><p style="color:blue;font-weight:bold;font-size:30px">Biodiversity along Elevational Gradients (BEST)</p></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="index.html">HOME</a>
+</li>
+<li>
+  <a href="team.html">TEAM</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    MOUNTAINS
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Dabieshan.html">Dabieshan (安徽大别山)</a>
+    </li>
+    <li>
+      <a href="Tianmushan.html">Tianmushan (浙江天目山)</a>
+    </li>
+    <li>
+      <a href="Yulongxueshan.html">Yulongxueshan (云南玉龙雪山)</a>
+    </li>
+    <li>
+      <a href="Gaoligongshan.html">Gaoligongshan (云南高黎贡山)</a>
+    </li>
+    <li>
+      <a href="Guanshan.html">Guanshan (江西官山)</a>
+    </li>
+    <li>
+      <a href="Daiyunshan.html">Daiyunshan (福建戴云山)</a>
+    </li>
+    <li>
+      <a href="Chebaling.html">Chebaling (广东车八岭)</a>
+    </li>
+    <li>
+      <a href="Damingshan.html">Chebaling (广西大明山)</a>
+    </li>
+    <li>
+      <a href="Jinfoshan.html">Jinfoshan (重庆金佛山)</a>
+    </li>
+    <li>
+      <a href="Emeishan.html">Emeishan (四川峨眉山)</a>
+    </li>
+    <li>
+      <a href="Daxiangling.html">Daxiangling (四川大相岭)</a>
+    </li>
+    <li>
+      <a href="Bawangling.html">Bawangling (海南霸王岭)</a>
+    </li>
+    <li>
+      <a href="Qinling.html">Qinling (陕西秦岭)</a>
+    </li>
+    <li>
+      <a href="Lushan.html">Lushan (江西庐山)</a>
+    </li>
+    <li>
+      <a href="Lishan.html">Lishan (山西历山)</a>
+    </li>
+    <li>
+      <a href="WestTianshan.html">WestTianshan (新疆西天山)</a>
+    </li>
+	<li>
+      <a href="Nanling.html">Nanling (南岭)</a>
+    </li>
+	<li>
+      <a href="Lishan.html">Baimaxueshan (白马雪山)</a>
+    </li>
+	 <li>
+      <a href="Lishan.html">Tongbiguan (铜壁关)</a>
+    </li>
+	 <li>
+      <a href="Lishan.html">Daxiangling (大相岭)</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="research.html">RESEARCH</a>
+</li>
+<li>
+  <a href="publications.html">PUBLICATIONS</a>
+</li>
+<li>
+  <a href="data.html">DATA</a>
+</li>
+<li>
+  <a href="News.html">NEWS</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">BEST-Daxiangling</h1>
+
+</div>
+
+
+<p><br> <br> <br></p>
+<div id="mt.-daxiangling-大相岭" class="section level2">
+<h2>Mt. Daxiangling (大相岭)</h2>
+<p>The Daxiangling study area is located in Yingjing County, Ya&#39;an City, Sichuan Province, with core geographical coordinates of 29°28′33″–29°43′54″N and 102°29′36″–102°52′24″E. Lying on the southeastern margin of the Qinghai–Tibet Plateau, in the deep mountain–gorge section where the Sichuan Basin transitions to the Qinghai–Tibet Plateau, the area occupies a unique geographical position and an extremely important ecological location, and is a key area for biodiversity conservation in China.</p>
+<p>The study area has a subtropical monsoon climate with pronounced mountain vertical zonation and strong spatial differentiation of climatic elements. The annual mean temperature is 15–17.6 °C, with a large diurnal temperature range, and annual precipitation is 1200–1800 mm, concentrated in summer. The landforms are dominated by high mountains and gorges, with dramatic relief, complex topography and a large elevational range, which creates strong topographic heterogeneity and a diversity of habitats. Soil types show typical vertical zonation with elevation, and are mainly mountain yellow soils and mountain brown soils.</p>
+<p>The region preserves an intact succession series of subtropical mountain forest ecosystems, and is a core habitat and an important ecological corridor for rare and endangered species in China. Biodiversity is rich: 44 species of nationally key protected wild animals have been recorded, including the giant panda and the Sichuan golden snub-nosed monkey, both of which are first-class nationally protected animals; 17 species of nationally key protected wild plants occur in the area, typically represented by the dove tree (<em>Davidia involucrata</em>) and the dawn redwood (<em>Metasequoia glyptostroboides</em>). The conservation value of the area is therefore extremely high.</p>
+<div align="center">
+<div id="htmlwidget-daxiangling01" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-daxiangling01">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.NatGeoWorldMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[29.6037,102.6833,10,null,null,{"interactive":true,"className":"","stroke":false,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.5},null,null,"大相岭",null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[29.6037,29.6037],"lng":[102.6833,102.6833]},"setView":[[29.6037,102.6833],8,[]]},"evals":[],"jsHooks":[]}</script>
+</div>
+<hr>
+<div id="vegetation-and-flora" class="section level3">
+<h3><strong>Vegetation and Flora</strong></h3>
+<p>The unique climate, topography and vertical soil differentiation of the Daxiangling study area have produced a distinctly layered mountain vertical vegetation spectrum, with extremely prominent vertical zonation, which provides diverse habitats for the survival and reproduction of plants and animals.</p>
+<p>Based on the topography and the elevational gradient of the study area, plots were laid out along the gradient. From the lowest elevation of 1466 m to the highest of 2623 m, one survey plot was established at intervals of about 100 m, giving 13 standard survey plots in total. These systematically cover the main elevational vegetation belts of the study area and fully reflect the elevational gradient patterns of vegetation and biological distribution in the region.</p>
+<p>According to the <em>Comprehensive Scientific Survey Report of the Sichuan Daxiangling Nature Reserve</em> (2006), the Daxiangling mountain system is rich in plant resources with an ancient floristic composition and outstanding biodiversity. A total of 699 woody plant species belonging to 228 genera and 77 families have been recorded, together with 1541 seed plant species (including varieties) belonging to 643 genera and 137 families. Forty-four dominant families each contain 10 or more species, covering 481 genera and 1277 species, which is 31.43% of the total number of families, 73.21% of the genera and 79.76% of the species of seed plants in the area; the core dominant families are Rosaceae, Asteraceae, Poaceae, Fabaceae and Ranunculaceae. In addition, 170 fern species in 72 genera and 33 families, 210 bryophyte species in 98 genera and 46 families, and 136 species of macrofungi occur in the area, indicating a complete community structure.</p>
+<p>The flora is notably ancient and rich in endemic Chinese elements. Twenty-four genera endemic to China are present, including <em>Ginkgo</em>, <em>Cunninghamia</em>, <em>Eucommia</em>, <em>Davidia</em> and <em>Emmenopterys</em>, together with 34 monotypic genera and 101 oligotypic genera, i.e. 135 genera in total, accounting for 20.55% of all genera of seed plants in the area. Large numbers of Tertiary relict plants also survive. Representative gymnosperms include <em>Cephalotaxus</em>, <em>Taxus</em> and <em>Tsuga</em>, while the angiosperms include the rare and ancient species <em>Tetracentron sinense</em>, <em>Euptelea pleiosperma</em>, <em>Cercidiphyllum japonicum</em> and <em>Magnolia wilsonii</em>.</p>
+<p>The reserve is rich in key protected plant resources, with 28 species of nationally key protected plants in total. Five species are first-class nationally protected plants: <em>Ginkgo biloba</em>, <em>Taxus chinensis</em>, <em>Davidia involucrata</em>, <em>Metasequoia glyptostroboides</em> and <em>Pseudotaxus chienii</em>. Ten species are second-class nationally protected plants, including <em>Picea brachytyla</em> var. <em>complanata</em>, <em>Cercidiphyllum japonicum</em>, <em>Davidia involucrata</em> var. <em>vilmoriniana</em>, <em>Tetracentron sinense</em>, <em>Toona ciliata</em> and <em>Phoebe zhennan</em>. Thirteen species are third-class nationally protected plants, covering <em>Gastrodia elata</em>, <em>Dysosma aurantiocaula</em>, <em>Coptis chinensis</em>, <em>Magnolia officinalis</em>, <em>Eucommia ulmoides</em> and others.</p>
+<p>The geographical composition of the seed plant flora is characterized by temperate elements. Genera with a North Temperate distribution number 168, accounting for 26.13% of the total number of genera, markedly higher than the national average of 10.03%. Tropical elements are relatively scarce: tropical Asia–tropical Africa and tropical Asia distributions account for only 3.27% and 5.29% respectively, both lower than the national averages, whereas temperate distribution types such as the East Asia–North America disjunction, the Old World Temperate distribution and the East Asian distribution all exceed the national levels. This clearly places the seed plant flora of the area within the temperate floristic system of China.</p>
+<p>Compared with the plant resources of China as a whole, the Daxiangling reserve is remarkably rich: within a limited area it conserves 38.38% of China&#39;s seed plant families, 20.64% of its genera and 4.97% of its species, making it a core hotspot of mountain plant diversity in Southwest China.</p>
+<table>
+ <thead>
+  <tr class="header">
+   <th>Category</th>
+   <th>Daxiangling</th>
+   <th>China</th>
+   <th>Percentage of China</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr class="odd">
+   <td>Number of families</td>
+   <td>137</td>
+   <td>357</td>
+   <td>38.38%</td>
+  </tr>
+  <tr class="even">
+   <td>Number of genera</td>
+   <td>643</td>
+   <td>3116</td>
+   <td>20.64%</td>
+  </tr>
+  <tr class="odd">
+   <td>Number of species</td>
+   <td>1541</td>
+   <td>ca. 31,000</td>
+   <td>ca. 4.97%</td>
+  </tr>
+ </tbody>
+</table>
+<hr>
+</div>
+<div id="fauna" class="section level3">
+<h3><strong>Fauna</strong></h3>
+<p>The special geographical position, complex topography and climate, and diverse vertical plant communities of the Daxiangling reserve create a wide range of habitats for wildlife. In terms of zoogeography, the area belongs to the Southwest Mountain Subregion of the Southwest China Region of the Oriental Realm. It is an ecological transition zone from the Qinghai–Tibet Region and the South China Region to the Central China Region, and also a meeting and transition zone between the Oriental and Palaearctic realms, with marked faunal interpenetration and very high species diversity.</p>
+<p>Wildlife resources in the reserve are abundant: 382 vertebrate species belonging to 5 classes, 31 orders and 94 families have been recorded. These comprise 79 mammal species (7 orders, 27 families), 265 bird species (17 orders, 53 families), 11 amphibian species (2 orders, 5 families), 13 reptile species (2 orders, 3 families) and 14 fish species (4 orders, 6 families). Among the mammalian fauna, species of the Oriental Realm are absolutely dominant, accounting for 77.21%, together with 17.73% Palaearctic species. The avifauna consists mainly of residents and summer visitors, which account for 82.63%, and Oriental Realm species make up 71.69% of the breeding birds.</p>
+<p>The reserve is home to many rare and protected animals, with more than 50 species of nationally key protected animals recorded. Nine species are first-class nationally key protected animals: the giant panda, leopard, forest musk deer, takin, black stork, scaly-sided merganser, white-tailed sea eagle, Chinese monal and black-necked crane. Thirty-seven species are second-class nationally key protected animals. The reserve also harbours 13 animal species endemic to China, such as the Emei shrew-mole, the Tibetan macaque and Reeve&#39;s muntjac. It is a core habitat for rare and relict species such as the giant panda, the red panda and the otter, with conspicuous patterns of north–south interpenetration and disjunct distribution of species, and thus has extremely high scientific and conservation value.</p>
+<hr>
+</div>
+<div id="research-sites-of-best-network" class="section level3">
+<h3><strong>Research sites of BEST network</strong></h3>
+<p>Between June and September 2023 the research team established 13 permanent standard plots of 20 m × 20 m at intervals of about 100 m along an elevational gradient from 1466 m to 2623 m. The plots cover the whole range of the main elevational gradient in the study area. The elevation, longitude and latitude of each plot are given in the figure and the table below.</p>
+<div align="center">
+<p><img src="Pictures/Daxiangling-1.png" alt="Daxiangling research plots" /></p>
+</div>
+<table>
+ <thead>
+  <tr class="header">
+   <th>Plot ID</th>
+   <th>Elevation (m)</th>
+   <th>Longitude (°E)</th>
+   <th>Latitude (°N)</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr class="odd">
+   <td>DXL01</td>
+   <td>1466</td>
+   <td>102.840</td>
+   <td>29.604</td>
+  </tr>
+  <tr class="even">
+   <td>DXL02</td>
+   <td>1522</td>
+   <td>102.842</td>
+   <td>29.602</td>
+  </tr>
+  <tr class="odd">
+   <td>DXL03</td>
+   <td>1693</td>
+   <td>102.896</td>
+   <td>29.604</td>
+  </tr>
+  <tr class="even">
+   <td>DXL04</td>
+   <td>1785</td>
+   <td>102.898</td>
+   <td>29.601</td>
+  </tr>
+  <tr class="odd">
+   <td>DXL05</td>
+   <td>1825</td>
+   <td>102.895</td>
+   <td>29.588</td>
+  </tr>
+  <tr class="even">
+   <td>DXL06</td>
+   <td>1950</td>
+   <td>102.899</td>
+   <td>29.580</td>
+  </tr>
+  <tr class="odd">
+   <td>DXL07</td>
+   <td>2013</td>
+   <td>102.895</td>
+   <td>29.575</td>
+  </tr>
+  <tr class="even">
+   <td>DXL08</td>
+   <td>2115</td>
+   <td>102.876</td>
+   <td>29.571</td>
+  </tr>
+  <tr class="odd">
+   <td>DXL09</td>
+   <td>2213</td>
+   <td>102.865</td>
+   <td>29.567</td>
+  </tr>
+  <tr class="even">
+   <td>DXL10</td>
+   <td>2337</td>
+   <td>102.856</td>
+   <td>29.561</td>
+  </tr>
+  <tr class="odd">
+   <td>DXL11</td>
+   <td>2432</td>
+   <td>102.854</td>
+   <td>29.559</td>
+  </tr>
+  <tr class="even">
+   <td>DXL12</td>
+   <td>2527</td>
+   <td>102.854</td>
+   <td>29.552</td>
+  </tr>
+  <tr class="odd">
+   <td>DXL13</td>
+   <td>2623</td>
+   <td>102.854</td>
+   <td>29.548</td>
+  </tr>
+ </tbody>
+</table>
+<hr>
+</div>
+<div id="principal-investigator" class="section level3">
+<h3><strong>Principal Investigator</strong></h3>
+<p>Shengbin Chen (陈圣宾), College of Ecology and Environment, Chengdu University of Technology: <a href="mailto:chainpin@126.com">chainpin@126.com</a></p>
+<p><strong>Research Team</strong>:</p>
+<ul>
+<li><p>Xian Wu（吴宪，College of Ecology and Environment, Chengdu University of Technology）</p></li>
+<li><p>Ping Wang（汪平，College of Geography and Planning, Chengdu University of Technology）</p></li>
+<li><p>Xinqiang Song（宋心强，Daxiangling Nature Reserve）</p></li>
+<li><p>Lu Qiu（邱鹭，Mianyang Normal University）</p></li>
+<li><p>Zhijian Shi（史志坚，College of Ecology and Environment, Chengdu University of Technology）</p></li>
+</ul>
+<hr>
+</div>
+<div id="selected-publications" class="section level3">
+<h3><strong>Selected Publications</strong></h3>
+<ol style="list-style-type: decimal">
+<li>Qin, W.R., Chen, Z.M., Zhang, D.L., Liu, J.H., Song, H.Y., Li, P., Yang, X., Song, X.Q., Yang, L.B., Chen, X., Pan, H., Ruan, T., Luan, X.F. and Yang, B. Dynamics of species diversity and community structure of the Giant panda habitats during restoration. Restoration Ecology, Early View e70494.</li>
+<li>Zhang, X.L., Chen, S., Qiao, X.S., Lou, J.F., Song, X.Q., Zhang, M. and Zhang, D.L. A Spatial Gradient Dose–Response Framework for Assessing Conservation Effectiveness in Mountainous Protected Area Networks: Evidence from Daxiangling Nature Reserve, China. Sustainability, 18(14): 7246. doi:10.3390/su18147246</li>
+<li>Liu, P., Fu, M.X., Qi, D.W., Song, X.Q., Wei, W., Yang, W.J., Chen, Y.X., Zhou, Y.S., Liu, J.B., Ma, R., Yu, J., Yang, H., Chen, P. and Hou, R. Monitoring bird and mammal species diversity using infrared cameras in the Sichuan Daxiangling Nature Reserve[J]. Biodiversity Science, 2020, 28(7): 905-912. doi:10.17520/biods.2019381</li>
+</ol>
+<hr>
+</div>
+<div id="site-support" class="section level3">
+<h3><strong>Site Support</strong></h3>
+<p>This site has been supported by:</p>
+<ul>
+<li><p>Sichuan Daxiangling Nature Reserve</p></li>
+<li><p>College of Ecology and Environment, Chengdu University of Technology</p></li>
+</ul>
+<hr>
+</div>
+</div>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+
+
+
+<hr>
+<center>
+Copyright © <a href="mailto:jzhang@des.ecnu.edu.cn">Jian Zhang</a> 2019 –
+<script type="text/javascript">
+  document.write(new Date().getFullYear());
+</script>
+<div class="line-block">Created using <a href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">rmarkdown</a></div>
+</center>
+
+
+</body>
+</html>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
